@@ -1,6 +1,6 @@
 <template>
-  <div class="componentContainer">
-    <v-carousel cycle="false">
+  <div class="componentContainerCarousel">
+    <v-carousel :cycle="false">
       <v-carousel-item v-for="(item,i) in this.rocketsData[0].flickr_images" :key="i" :src="item" reverse-transition="fade"
         transition="fade" dark></v-carousel-item>
     </v-carousel>
@@ -15,7 +15,9 @@ export default {
 </script>
 
 <style scoped>
-
+.componentContainerCarousel{
+  margin: 40px
+}
 </style>
 
 

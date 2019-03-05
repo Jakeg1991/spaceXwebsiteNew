@@ -71,6 +71,7 @@ export default new Vuex.Store({
       try {
         let response = await axios.get(`https://api.spacexdata.com/v3/launches`, {});
         commit('setLaunches', response.data);
+        console.log(response.data)
       } catch (error) {
         commit('setLaunches', []);
       }

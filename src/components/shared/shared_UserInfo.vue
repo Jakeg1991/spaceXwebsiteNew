@@ -38,7 +38,6 @@ export default {
     },
     mounted() {
         this.darkMode = this.$store.state.darkmode
-        console.log(this.$store.state.darkmode)
     }
 }
 </script>

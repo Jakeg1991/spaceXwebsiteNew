@@ -1,5 +1,5 @@
 <template>
-<v-parallax dark src="https://cdn-images-1.medium.com/max/2000/1*gEN0glKcBb9iY112nvadAw.jpeg">
+<v-parallax dark src="https://www.spacex.com/sites/spacex/files/crew_dragon_iss_resized.jpg">
     <v-layout align-center column justify-center>
         <!-- <h1 class="display-2 font-weight-thin mb-3">SpaceX</h1> -->
         <img src="~/../../assets/SpaceX-Logo.svg" alt="SpaceXlogo" class="logo">

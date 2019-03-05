@@ -1,5 +1,5 @@
 <template>
-      <v-toolbar dark flat>
+      <v-toolbar color="rgba(9, 83, 134, 1)" flat>
     <v-toolbar-items>
       <v-btn flat to="/">Home</v-btn>
       <v-btn flat to="/launches">Launches</v-btn>

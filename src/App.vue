@@ -63,13 +63,11 @@ export default {
       }
     },
     login() {
-      console.log("in login");
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase
         .auth()
         .signInWithPopup(provider)
         .then(result => {
-          console.log("Sign-in successful");
           this.$store.dispatch('setUserInfo', result.user)
           this.$store.dispatch('login')
           this.$router.push('/')
@@ -83,7 +81,6 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          console.log("Sign-out successful");
           this.$store.dispatch('logout');
           this.$router.push('/login')
         })
@@ -96,11 +93,13 @@ export default {
     },
     darkMode(boonlean) {
       if (boonlean == false) {
-        document.documentElement.style.setProperty('--bgcolor', '#e0e0e0')
-        document.documentElement.style.setProperty('--fontcolor', '#303030')
-        document.documentElement.style.setProperty('--utlitybarcolor', '#e0e0e0a9')
+        document.documentElement.style.setProperty('--bgcolor', "rgba(190, 190, 190)")
+        document.documentElement.style.setProperty('--innercolor', "rgba(222, 223, 226)")
+        document.documentElement.style.setProperty('--fontcolor', "rgba(9, 83, 134, 1)")
+        document.documentElement.style.setProperty('--utlitybarcolor', " rgba(214, 216, 219, 0.9)")
       } else {
-        document.documentElement.style.setProperty('--bgcolor', '#303030')
+        document.documentElement.style.setProperty('--bgcolor', '#141414')
+        document.documentElement.style.setProperty('--innercolor', '#303030')
         document.documentElement.style.setProperty('--fontcolor', '#e0e0e0')
         document.documentElement.style.setProperty('--utlitybarcolor', ' #303030a9')
       }
@@ -114,14 +113,23 @@ export default {
 }
 </script>
 
-<style>:root {
-  --bgcolor: #e0e0e0;
-  --fontcolor: #303030;
-  --utlitybarcolor:  #e0e0e0a9;
+<style lang="scss">:root {
+  --bgcolor: rgba(190, 190, 190);
+  --innercolor:  rgb(222, 223, 226);
+  --fontcolor: rgba(9, 83, 134, 1);
+  --utlitybarcolor: rgba(214, 216, 219, 0.9);
+}
+
+@font-face {
+  font-family: "bankGothicRegular";
+  src: url('~/../../assets/fonts/bankgothic/bankgothic-regular.ttf');
+  font-weight: 400;
+  font-style: normal;
 }
 
 
 .body {
+  font-family: 'bankGothicRegular', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: var(--bgcolor);
   -webkit-transition: background-image 3000ms ease-in-out;
   -moz-transition: background-image 3000ms ease-in-out;
@@ -133,7 +141,18 @@ export default {
 }
 
 .componentContainer {
-  margin: 50px
+  margin: 30px
+}
+
+.componentContainerInner {
+  margin: 5px;
+  width: 100%;
+  background-color: var(--innercolor);
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px;
+  border-style: solid
 }
 </style>
+
 

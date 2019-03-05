@@ -9,14 +9,15 @@
 <rockets_rocketGraphic ref="rocketGraphic" :rocketsData="this.chosenRocketData"/>
 <rockets_technicalDetails ref="technicalDetails" :rocketsData="this.chosenRocketData"/>
 </div>
+<shared_Footer/>
 </div>
-
 </template>
 
 <script>
 import shared_NavBar from '@/components/shared/shared_NavBar.vue';
 import shared_UserInfo from '@/components/shared/shared_UserInfo.vue';
 import shared_Header from '@/components/shared/shared_Header.vue';
+import shared_Footer from '@/components/shared/shared_Footer.vue';
 import rockets_technicalDetails from '@/components/rockets/rockets_technicalDetails.vue';
 import rockets_rocketSelector from '@/components/rockets/rockets_rocketSelector.vue';
 import rockets_rocketGraphic from '@/components/rockets/rockets_rocketGraphic.vue';
@@ -36,7 +37,8 @@ export default {
     rockets_generalInfo,
     shared_NavBar,
     shared_UserInfo,
-    shared_Header
+    shared_Header,
+    shared_Footer
   },
   methods: {
     redirectPage() {
