@@ -5,8 +5,8 @@
   <shared_NavBar />
 <div class="componentContainer">
 <rockets_rocketSelector ref="rocketSelector" :rocketsData="this.$store.state.rockets"/>
-<rockets_rocketGraphic ref="rocketGraphic" :rocketsData="this.chosenRocketData"/>
 <rockets_generalInfo ref="generalInfo" :rocketsData="this.chosenRocketData"/>
+<rockets_rocketGraphic ref="rocketGraphic" :rocketsData="this.chosenRocketData"/>
 <rockets_technicalDetails ref="technicalDetails" :rocketsData="this.chosenRocketData"/>
 </div>
 </div>

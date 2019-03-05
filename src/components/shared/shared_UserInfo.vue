@@ -7,7 +7,7 @@
     <v-layout align-center justify-center row fill-height>
         <img class="avatar" v-bind:src="this.$store.state.userInfo.photoURL" />
         <v-flex>
-            logged in as: {{this.$store.state.userInfo.displayName}}
+            Logged In: {{this.$store.state.userInfo.displayName}}
         </v-flex>
         <v-btn small v-on:click="logout()"> Logout </v-btn>
     </v-layout>

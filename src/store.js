@@ -15,7 +15,6 @@ export default new Vuex.Store({
   mutations: {
     setUserInfo(state, payload) {
       state.userInfo = payload;
-      console.log(payload)
     },
 
     setLogin(state) {
@@ -27,12 +26,11 @@ export default new Vuex.Store({
     setDarkmode(state) {
       if (state.darkMode == true) {
         state.darkMode = false
-        console.log("lightson")
-        console.log(state.darkMode)
-      } else{state.darkMode = true
-        console.log("lightsoff")}
-        console.log(state.darkMode)},
-    
+      } else {
+        state.darkMode = true
+      }
+    },
+
     setLaunches(state, payload) {
       state.launches = payload;
     },
@@ -41,52 +39,52 @@ export default new Vuex.Store({
     }
   },
   actions: {
-      setUserInfo({
-        commit
-      }, payload) {
-        commit('setUserInfo', payload)
-      },
+    setUserInfo({
+      commit
+    }, payload) {
+      commit('setUserInfo', payload)
+    },
 
 
-      logout({
-        commit
-      }, plan) {
-        commit('setLogout')
-      },
+    logout({
+      commit
+    }, plan) {
+      commit('setLogout')
+    },
 
-      login({
-        commit
-      }, plan) {
-        commit('setLogin')
-      },
+    login({
+      commit
+    }, plan) {
+      commit('setLogin')
+    },
 
-      changeDarkmode({
-        commit
-      }, plan) {
-        commit('setDarkmode')
-      },
+    changeDarkmode({
+      commit
+    }, plan) {
+      commit('setDarkmode')
+    },
 
-      async getLaunches({
-        commit
-      }, plan) {
+    async getLaunches({
+      commit
+    }, plan) {
 
-        try {
-          let response = await axios.get(`https://api.spacexdata.com/v3/launches`, {});
-          commit('setLaunches', response.data);
-        } catch (error) {
-          commit('setLaunches', []);
-        }
-      },
+      try {
+        let response = await axios.get(`https://api.spacexdata.com/v3/launches`, {});
+        commit('setLaunches', response.data);
+      } catch (error) {
+        commit('setLaunches', []);
+      }
+    },
 
-      async getRockets({
-          state,
-          commit
-        }, plan) {
-          try {
-            let response = await axios.get(`https://api.spacexdata.com/v3/rockets`, {});
-            commit('setRockets', response.data);
-            console.log(response.data)
-          } catch (error) {
+    async getRockets({
+      state,
+      commit
+    }, plan) {
+      try {
+        let response = await axios.get(`https://api.spacexdata.com/v3/rockets`, {});
+        commit('setRockets', response.data);
+        console.log(response.data)
+      } catch (error) {
         commit('setRockets', []);
       }
     }
