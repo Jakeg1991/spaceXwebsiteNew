@@ -1,8 +1,5 @@
 <template>
-<div class="viewContainer">
-  <shared_UserInfo @logoutClicked="runLogout()"/>
-  <shared_Header />
-  <shared_NavBar />
+<div>
 <div class="componentContainer">
 <rockets_rocketSelector ref="rocketSelector" :rocketsData="this.$store.state.rockets"/>
 <rockets_generalInfo ref="generalInfo" :rocketsData="this.chosenRocketData"/>
@@ -14,9 +11,6 @@
 </template>
 
 <script>
-import shared_NavBar from '@/components/shared/shared_NavBar.vue';
-import shared_UserInfo from '@/components/shared/shared_UserInfo.vue';
-import shared_Header from '@/components/shared/shared_Header.vue';
 import shared_Footer from '@/components/shared/shared_Footer.vue';
 import rockets_technicalDetails from '@/components/rockets/rockets_technicalDetails.vue';
 import rockets_rocketSelector from '@/components/rockets/rockets_rocketSelector.vue';
@@ -35,9 +29,6 @@ export default {
     rockets_rocketSelector,
     rockets_rocketGraphic,
     rockets_generalInfo,
-    shared_NavBar,
-    shared_UserInfo,
-    shared_Header,
     shared_Footer
   },
   methods: {

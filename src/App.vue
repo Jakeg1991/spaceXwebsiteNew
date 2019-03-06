@@ -1,6 +1,9 @@
 <template>
   <v-app>
     <div class="body">
+        <shared_UserInfo @logoutClicked="logout()"/>
+        <shared_Header />
+        <shared_NavBar />
       <div class="fixed">
       </div>
       <router-view @loginRunFunc="login()" @logoutRunFunc="logout()" @redirectFunc="redirect()"/>
@@ -9,6 +12,9 @@
 </template>
 <script>
 import firebase from "firebase/app";
+import shared_UserInfo from '@/components/shared/shared_UserInfo.vue';
+import shared_NavBar from '@/components/shared/shared_NavBar.vue';
+import shared_Header from '@/components/shared/shared_Header.vue';
 import "firebase/auth";
 import "firebase/database";
 
@@ -28,6 +34,11 @@ export default {
     return {
       loggedIn: false
     }
+  },
+  components:{
+    shared_UserInfo,
+    shared_NavBar,
+    shared_Header
   },
   computed: {
     loggedInCompute() {
@@ -119,7 +130,6 @@ export default {
   --fontcolor: rgba(9, 83, 134, 1);
   --utlitybarcolor: rgba(214, 216, 219, 0.9);
 }
-
 @font-face {
   font-family: "bankGothicRegular";
   src: url('~/../../assets/fonts/bankgothic/bankgothic-regular.ttf');
@@ -127,6 +137,12 @@ export default {
   font-style: normal;
 }
 
+p { margin:0 }
+br { 
+              display: block;
+            content: ""; 
+            margin-top: 5px; 
+}
 
 .body {
   font-family: 'bankGothicRegular', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -141,7 +157,7 @@ export default {
 }
 
 .componentContainer {
-  margin: 30px
+  margin: 30px;
 }
 
 .componentContainerInner {

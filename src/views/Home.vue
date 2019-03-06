@@ -1,8 +1,5 @@
 <template>
-  <div class="viewContainer">
-    <shared_UserInfo @logoutClicked="runLogout()" />
-    <shared_Header />
-    <shared_NavBar />
+  <div>
     <div class="componentContainer">
       <H1>HOME</H1>
     </div>
@@ -12,9 +9,6 @@
 
 <script>
 import store from '../store'
-import shared_NavBar from '@/components/shared/shared_NavBar.vue';
-import shared_UserInfo from '@/components/shared/shared_UserInfo.vue';
-import shared_Header from '@/components/shared/shared_Header.vue';
 import shared_Footer from '@/components/shared/shared_Footer.vue';
 
 export default {
@@ -27,13 +21,13 @@ export default {
     shared_Footer
   },
   methods: {
-    runLogout() {
-      this.$emit('logoutRunFunc')
-    },
+        redirectPage() {
+      if (this.$store.state.loggedIn == false) {
+        this.$emit('redirectFunc')
+      }
   },
   mounted() {
-    if (this.$store.state.loggedIn == false) {
-      this.$emit('redirectFunc')
+    this.redirectPage
     }
   },
 }

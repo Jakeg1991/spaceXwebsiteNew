@@ -1,37 +1,31 @@
 <template>
-<div class="viewContainer">
-  <shared_UserInfo @logoutClicked="runLogout()"/>
-  <shared_Header />
-  <shared_NavBar />
+<div>
 <div class="componentContainer">
-<h1>LAUNCHES</h1>
-
-
-<div v-for="(launch, index) in this.launchesData" :key="index">
-      <launches_oneLaunch ref="oneLaunch" :launchesData="launchesData"/>
+<div class="launchesPatchGrid">
+<div v-for="(launch, index) in this.allLaunches" :key="index">
+      <launches_oneLaunch ref="oneLaunch" :launch="launch"/>
     </div>
-
-
+</div>
 </div>
 <shared_Footer/>
 </div>
 </template>
 
 <script>
-import shared_NavBar from '@/components/shared/shared_NavBar.vue';
-import shared_UserInfo from '@/components/shared/shared_UserInfo.vue';
-import shared_Header from '@/components/shared/shared_Header.vue';
 import shared_Footer from '@/components/shared/shared_Footer.vue';
 import launches_oneLaunch from '@/components/launches/launches_oneLaunch.vue';
 
 export default {
   name: 'launches',
   components: {
-    shared_NavBar,
-    shared_UserInfo,
-    shared_Header,
     shared_Footer,
     launches_oneLaunch,
+  },
+  data(){
+    return{
+      allLaunches:[],
+      filteredLaunches:[]
+    }
   },
   methods: {
     redirectPage() {
@@ -40,7 +34,8 @@ export default {
       }
     },
     retrieveStoreData() {
-      this.launchesData = this.$store.state.launches
+      this.allLaunches = this.$store.state.launches
+      this.filteredLaunches = this.$store.state.launches
       console.log(this.$store.state.launches)
     },
     runLogout() {
@@ -55,3 +50,16 @@ export default {
   },
 }
 </script>
+
+<style>
+.launchesPatchGrid{
+  display: flex;
+  align-content:flex-start;
+  flex-wrap: wrap;
+  justify-content:center;
+  border: 1px;
+}
+</style>
+
+
+
