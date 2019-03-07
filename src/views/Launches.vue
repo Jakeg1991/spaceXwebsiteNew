@@ -1,11 +1,7 @@
 <template>
 <div>
 <div class="componentContainer">
-<div class="launchesPatchGrid">
-<div v-for="(launch, index) in this.allLaunches" :key="index">
-      <launches_oneLaunch ref="oneLaunch" :launch="launch"/>
-    </div>
-</div>
+<launches_pastLaunches/>
 </div>
 <shared_Footer/>
 </div>
@@ -13,18 +9,17 @@
 
 <script>
 import shared_Footer from '@/components/shared/shared_Footer.vue';
-import launches_oneLaunch from '@/components/launches/launches_oneLaunch.vue';
+import launches_pastLaunches from '@/components/launches/launches_pastLaunches.vue';
 
 export default {
   name: 'launches',
   components: {
     shared_Footer,
-    launches_oneLaunch,
+    launches_pastLaunches,
   },
-  data(){
-    return{
-      allLaunches:[],
-      filteredLaunches:[]
+  data() {
+    return {
+      pastLaunches: [],
     }
   },
   methods: {
@@ -34,9 +29,7 @@ export default {
       }
     },
     retrieveStoreData() {
-      this.allLaunches = this.$store.state.launches
-      this.filteredLaunches = this.$store.state.launches
-      console.log(this.$store.state.launches)
+      this.pastLaunches = this.$store.state.launches
     },
     runLogout() {
       this.$emit('logoutRunFunc')
@@ -47,18 +40,12 @@ export default {
   },
   created() {
     this.retrieveStoreData()
-  },
-}
+  },}
+
 </script>
 
 <style>
-.launchesPatchGrid{
-  display: flex;
-  align-content:flex-start;
-  flex-wrap: wrap;
-  justify-content:center;
-  border: 1px;
-}
+
 </style>
 
 

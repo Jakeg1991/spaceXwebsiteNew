@@ -13,11 +13,7 @@ import shared_Footer from '@/components/shared/shared_Footer.vue';
 
 export default {
   name: 'home',
-  computed: {},
   components: {
-    shared_NavBar,
-    shared_UserInfo,
-    shared_Header,
     shared_Footer
   },
   methods: {

@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 .componentContainerCarousel{
-  margin: 40px
+  margin: 0px 40px 0px 40px
 }
 </style>
 

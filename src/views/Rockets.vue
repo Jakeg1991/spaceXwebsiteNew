@@ -3,8 +3,9 @@
 <div class="componentContainer">
 <rockets_rocketSelector ref="rocketSelector" :rocketsData="this.$store.state.rockets"/>
 <rockets_generalInfo ref="generalInfo" :rocketsData="this.chosenRocketData"/>
-<rockets_rocketGraphic ref="rocketGraphic" :rocketsData="this.chosenRocketData"/>
 <rockets_technicalDetails ref="technicalDetails" :rocketsData="this.chosenRocketData"/>
+<rockets_rocketGraphic ref="rocketGraphic" :rocketsData="this.chosenRocketData"/>
+<rockets_missionsFlown ref="missionsFlown" :chosenRocketMissionData="this.chosenRocketMissionData"/>
 </div>
 <shared_Footer/>
 </div>
@@ -16,16 +17,19 @@ import rockets_technicalDetails from '@/components/rockets/rockets_technicalDeta
 import rockets_rocketSelector from '@/components/rockets/rockets_rocketSelector.vue';
 import rockets_rocketGraphic from '@/components/rockets/rockets_rocketGraphic.vue';
 import rockets_generalInfo from '@/components/rockets/rockets_generalInfo.vue';
+import rockets_missionsFlown from '@/components/rockets/rockets_missionsFlown.vue';
 
 export default {
   name: 'rockets',
   data() {
     return {
       chosenRocketData: undefined,
+      chosenRocketMissionData: undefined
     }
   },
   components: {
     rockets_technicalDetails,
+    rockets_missionsFlown,
     rockets_rocketSelector,
     rockets_rocketGraphic,
     rockets_generalInfo,
@@ -46,7 +50,15 @@ export default {
     },
     filterRockets(rocket) {
       this.chosenRocketData = this.$store.state.rockets.filter(oneRocket => oneRocket.rocket_name == rocket)
+      this.chosenRocketMissionData = this.$store.state.launches.filter(oneLaunch =>
+        oneLaunch.rocket.rocket_name == rocket)
     },
+//     filterMissions(rocket) {
+// console.log( this.chosenRocketMissionData = this.$store.state.launches.rocket.rocket_name.filter((oneMission) => {
+//       oneRocket.rocket_name == launch.upcoming
+//       }))
+//     }
+    
   },
   created() {
     this.retrieveStoreData()

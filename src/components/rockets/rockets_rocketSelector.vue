@@ -1,7 +1,7 @@
 <template>
     <div class="componentContainer">
-        <H3>ROCKET SELECTOR</H3>
-        <v-select :items="allRockets" solo dense v-model="currentSelectedRocket" v-on:input="changeSelectedRocket()"></v-select>
+        <H3>SELECT ROCKET:</H3>
+        <v-select :items="allRockets" solo flat v-model="currentSelectedRocket" v-on:input="changeSelectedRocket()"></v-select>
     </div>
 </template>
 

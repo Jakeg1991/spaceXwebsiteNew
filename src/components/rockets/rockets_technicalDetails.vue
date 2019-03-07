@@ -1,6 +1,6 @@
 <template>
 <div class="componentContainer">
-  <H2> TECHNICAL DETAILS</H2>
+  <H3> TECHNICAL DETAILS</H3>
   <div class="flexBoxWrapper">
   <div class="componentContainerInner">
     <h3>GENERAL</h3>
@@ -27,6 +27,8 @@
     <H3>ENGINES</H3>
     <HR/>
     <div class="techInfo">
+    <p>Engine Type: {{rocketsData[0].engines.type}}</p>
+    <br>
     <p>Engine Layout: {{rocketsData[0].engines.layout}}</p>
     <br>
     <p>Propellant 1: {{rocketsData[0].engines.propellant_1}}</p>
@@ -34,6 +36,9 @@
     <br>
     <p>Thrust at Sea Level(kiloNewtons): {{rocketsData[0].engines.thrust_sea_level.kN}}</p>
     <p>Thrust at Sea Level(Pound-force): {{rocketsData[0].engines.thrust_sea_level.lbf}}</p>
+    <br>
+    <p>Thrust in Vacuum(kiloNewtons): {{rocketsData[0].engines.thrust_vacuum.kN}}</p>
+    <p>Thrust in Vacuum(Pound-force): {{rocketsData[0].engines.thrust_vacuum.lbf}}</p>
 </div>
   </div>
     <div class="componentContainerInner">

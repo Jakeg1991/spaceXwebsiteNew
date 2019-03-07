@@ -1,6 +1,6 @@
 <template>
 <div class="componentContainer">
-    <h1>{{this.rocketsData[0].rocket_name}}</h1>
+    <h3>GENERAL INFO</h3>
   <div class="componentContainerInner">
     <p>{{rocketsData[0].description}}</p>
   </div>
