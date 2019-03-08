@@ -7,7 +7,7 @@
             <img v-bind:src="launch.links.mission_patch" class="missionPatchRocketIMG"/>
         </div>
         </div>
-    </div>
+</div>
 </div>
 </template>
 
@@ -30,22 +30,16 @@ export default {
         justify-content: center;
     }
     .missionPatchRocket {
-        margin: 5px;
-        background-color: var(--highlightcolor);
-        border: 1px;
-        border-style: solid;
-        padding: 0px;
-        height: 95px;
-        width: 95px;
+        height: 80px;
+        width: 80px;
         transition: transform .2s;
-        border-radius: 50px;
         display: flex;
         align-content: center;
         flex-wrap: wrap;
         justify-content: center;
     }
     .missionPatchRocket:hover {
-        transform: scale(2.5);
+        transform: scale(3.5);
     }
 </style>
 

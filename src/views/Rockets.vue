@@ -3,19 +3,18 @@
 <div class="componentContainer">
 <rockets_rocketSelector ref="rocketSelector" :rocketsData="this.$store.state.rockets"/>
 <rockets_generalInfo ref="generalInfo" :rocketsData="this.chosenRocketData"/>
+<rockets_rocketCarousel ref="rocketGraphic" :rocketsData="this.chosenRocketData"/>
 <rockets_technicalDetails ref="technicalDetails" :rocketsData="this.chosenRocketData"/>
-<rockets_rocketGraphic ref="rocketGraphic" :rocketsData="this.chosenRocketData"/>
 <rockets_missionsFlown ref="missionsFlown" :chosenRocketMissionData="this.chosenRocketMissionData"/>
 </div>
-<shared_Footer/>
+<shared_footer/>
 </div>
 </template>
-
 <script>
-import shared_Footer from '@/components/shared/shared_Footer.vue';
+import shared_footer from '@/components/shared/shared_footer.vue';
 import rockets_technicalDetails from '@/components/rockets/rockets_technicalDetails.vue';
 import rockets_rocketSelector from '@/components/rockets/rockets_rocketSelector.vue';
-import rockets_rocketGraphic from '@/components/rockets/rockets_rocketGraphic.vue';
+import rockets_rocketCarousel from '@/components/rockets/rockets_rocketCarousel.vue';
 import rockets_generalInfo from '@/components/rockets/rockets_generalInfo.vue';
 import rockets_missionsFlown from '@/components/rockets/rockets_missionsFlown.vue';
 
@@ -31,9 +30,9 @@ export default {
     rockets_technicalDetails,
     rockets_missionsFlown,
     rockets_rocketSelector,
-    rockets_rocketGraphic,
+    rockets_rocketCarousel,
     rockets_generalInfo,
-    shared_Footer
+    shared_footer
   },
   methods: {
     redirectPage() {
@@ -47,6 +46,7 @@ export default {
 
     retrieveStoreData() {
       this.rocketsData = this.$store.state.rockets
+      console.log(this.$store.state.rockets)
     },
     filterRockets(rocket) {
       this.chosenRocketData = this.$store.state.rockets.filter(oneRocket => oneRocket.rocket_name == rocket)

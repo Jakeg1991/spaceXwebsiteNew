@@ -3,7 +3,7 @@
   <H3> TECHNICAL DETAILS</H3>
   <div class="flexBoxWrapper">
   <div class="componentContainerInner">
-    <h3>GENERAL</h3>
+    <h3>General</h3>
     <HR/>
     <div class="techInfo">
     <p>Stages: {{rocketsData[0].stages}}</p>
@@ -24,7 +24,7 @@
     </div>
   </div>
     <div class="componentContainerInner">
-    <H3>ENGINES</H3>
+    <H3>Engines</H3>
     <HR/>
     <div class="techInfo">
     <p>Engine Type: {{rocketsData[0].engines.type}}</p>
@@ -42,7 +42,7 @@
 </div>
   </div>
     <div class="componentContainerInner">
-    <H3>OTHER</H3>
+    <H3>Other</H3>
     <HR/>
     <div class="techInfo">
     <p>Currently Active: {{rocketsData[0].active}}</p>
@@ -68,7 +68,7 @@ export default {
   justify-content:space-around
 }
 .techInfo{
-  margin: 15px
+  margin: 7px
 }
 </style>
 

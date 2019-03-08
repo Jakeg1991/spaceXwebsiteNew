@@ -18,7 +18,7 @@
 <script>
 import firebase from "firebase/app";
 export default {
-    name: "shared_UserInfo",
+    name: "shared_userInfo",
     data() {
         return {}
     },

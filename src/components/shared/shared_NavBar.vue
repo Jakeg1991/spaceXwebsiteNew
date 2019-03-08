@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "shared_NavBar",
+  name: "shared_navBar",
   components: {
   },}
 

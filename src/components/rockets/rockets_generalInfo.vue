@@ -1,21 +1,19 @@
 <template>
 <div class="componentContainer">
     <h3>GENERAL INFO</h3>
+    <div class="flexBoxWrapper">
   <div class="componentContainerInner">
+        <h3>Description</h3>
+        <hr>
+        <div class="techInfo">
     <p>{{rocketsData[0].description}}</p>
-
-<div>
-  <b-button @click="showCollapse = !showCollapse" :class="showCollapse ? 'collapsed' : null" aria-controls="collapse4"
-    :aria-expanded="showCollapse ? 'true' : 'false'">
-    Toggle Collapse
-  </b-button>
-  <b-collapse class="mt-2" v-model="showCollapse" id="collapse4">
-    <b-card>I should start open!</b-card>
-  </b-collapse>
-</div>
-
+    </div>
   </div>
-
+  <div class="rocketGraphicContainer">
+  </div>
+  <div class="componentContainerInner">
+  </div>
+</div>
   </div>
 </template>
 
@@ -23,16 +21,21 @@
 export default {
   name: "rockets_generalInfo",
   props: ['rocketsData'],
-  data(){
-    return {
-      showCollapse: true
-    }
-  },
   components: {
   },}
 </script>
 
 <style>
+.rocketGraphicContainer{
+  height: 500px;
+  width: 100%;
+  background-color: black;
+  margin: 5px;
+border-radius: 5px;
+padding: 10px;
+    border: 1px;
+    border-style: solid
+}
 </style>
 
 

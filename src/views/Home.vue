@@ -3,18 +3,18 @@
     <div class="componentContainer">
       <H1>HOME</H1>
     </div>
-      <shared_Footer/>
+      <shared_footer/>
   </div>
 </template>
 
 <script>
 import store from '../store'
-import shared_Footer from '@/components/shared/shared_Footer.vue';
+import shared_footer from '@/components/shared/shared_footer.vue';
 
 export default {
   name: 'home',
   components: {
-    shared_Footer
+    shared_footer
   },
   methods: {
         redirectPage() {

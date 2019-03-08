@@ -1,21 +1,21 @@
 <template>
 <div>
 <div class="componentContainer">
-<launches_pastLaunches/>
+<launches_launchesGrid/>
 </div>
-<shared_Footer/>
+<shared_footer/>
 </div>
 </template>
 
 <script>
-import shared_Footer from '@/components/shared/shared_Footer.vue';
-import launches_pastLaunches from '@/components/launches/launches_pastLaunches.vue';
+import shared_footer from '@/components/shared/shared_footer.vue';
+import launches_launchesGrid from '@/components/launches/launches_launchesGrid.vue';
 
 export default {
   name: 'launches',
   components: {
-    shared_Footer,
-    launches_pastLaunches,
+    shared_footer,
+    launches_launchesGrid,
   },
   data() {
     return {

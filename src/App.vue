@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <div class="body">
-        <shared_UserInfo @logoutClicked="logout()"/>
-        <shared_Header />
-        <shared_NavBar />
+        <shared_userInfo @logoutClicked="logout()"/>
+        <shared_header ref="header"/>
+        <shared_navBar />
       <div class="fixed">
       </div>
       <router-view @loginRunFunc="login()" @logoutRunFunc="logout()" @redirectFunc="redirect()"/>
@@ -12,9 +12,9 @@
 </template>
 <script>
 import firebase from "firebase/app";
-import shared_UserInfo from '@/components/shared/shared_UserInfo.vue';
-import shared_NavBar from '@/components/shared/shared_NavBar.vue';
-import shared_Header from '@/components/shared/shared_Header.vue';
+import shared_userInfo from '@/components/shared/shared_userInfo.vue';
+import shared_navBar from '@/components/shared/shared_navBar.vue';
+import shared_header from '@/components/shared/shared_header.vue';
 import "firebase/auth";
 import "firebase/database";
 
@@ -36,9 +36,9 @@ export default {
     }
   },
   components:{
-    shared_UserInfo,
-    shared_NavBar,
-    shared_Header
+    shared_userInfo,
+    shared_navBar,
+    shared_header
   },
   computed: {
     loggedInCompute() {
@@ -120,7 +120,7 @@ export default {
   },
   mounted() {
     this.darkModeInit()
-    this.$store.dispatch('getLaunches')
+    this.$store.dispatch('getLaunches').then(this.$refs.header.$refs.countdown.createCountdownClock())
     this.$store.dispatch('getRockets')
   },
 }

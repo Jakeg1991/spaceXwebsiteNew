@@ -7,7 +7,7 @@
 
 <script>
   export default {
-        name: "shared_Footer",
+        name: "shared_footer",
     components: {},
   }
 </script>
