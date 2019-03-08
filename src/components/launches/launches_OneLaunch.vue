@@ -1,19 +1,17 @@
 <template>
 <div>
   <div class="launchPatchClickable">
-    <img v-bind:src="this.launch.links.mission_patch_small" class="missionPatch" />
+    <img v-if="this.launch.launch_success === true" v-bind:src="this.launch.links.mission_patch" class="missionPatch" />
+    <img v-else v-bind:src="this.launch.links.mission_patch" class="missionPatch" />
     <div class="missionInfo">
       <h2><strong>{{this.launch.mission_name}}</strong></h2>
-      <h2 v-if="this.launch.launch_success" style="color:#00d300">SUCCESS</h2>
-      <h2 v-else style="color:#d30000">FAILURE</h2>
-      <p>Flight Number: <strong>{{this.launch.flight_number}}</strong></p>
-      <br>
+      <h2 v-if="this.launch.launch_success === true" style="color:#00d300">SUCCESS</h2>
+      <h2 v-else-if="this.launch.launch_success === false" style="color:#d30000">FAILURE</h2>
+      <h2 v-else style="color:#00d3d3">UPCOMING</h2>
+      <p>Flight Nº: <strong>{{this.launch.flight_number}}</strong></p>
       <p>Rocket: <strong>{{this.launch.rocket.rocket_name}}</strong></p>
-      <br>
-      <br>
-      <p>Launch Date: <strong>{{this.launch.launch_date_utc}}</strong></p>
-      <br>
-      <p>Launch Site: <strong>{{this.launch.launch_site.site_name}}</strong></p>
+      <p>Date: <strong>{{this.launch.launch_date_utc}}</strong></p>
+      <p>Site: <strong>{{this.launch.launch_site.site_name}}</strong></p>
     </div>
   </div>
 </div>

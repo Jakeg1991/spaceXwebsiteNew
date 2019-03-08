@@ -4,10 +4,9 @@
         <img src="~/../../assets/SpaceX-Logo.svg" alt="SpaceXlogo" class="logo">
         <h4 class="subheading">technical information resource</h4>
         <div class="countdownContainer">
-        <h3>Next Launch:</h3>
-        <h3 id="countdown"></h3>
+        <h3 class="countdownMargin">Next Launch:</h3>
+        <h3 class="countdownMargin" id="countdown"></h3>
         </div>
-        <v-btn :click="this.getNextLaunchDate">test</v-btn>
     </v-layout>
 </v-parallax>
 </template>
@@ -18,12 +17,12 @@ export default {
     components: {},
     data(){
         return{
-            nextLaunchDate: "2019-09-30T20:00:00-04:00"
+            nextLaunchDate: new Date()
         }
     },
     methods: {
         createCountdownClock() {
-            var countDownDate = new Date(this.nextLaunchDate).getTime();
+            var countDownDate = new Date(this.nextLaunchDateCompute).getTime();
             var x = setInterval(function () {
                 var now = new Date().getTime();
                 var distance = countDownDate - now;
@@ -39,35 +38,21 @@ export default {
                 }
             }, 1000);
         },
-        getNextLaunchDate(){
-            console.log("test")
-            // this.$store.state.launches.rocket.rocket_name.filter((oneMission) => {
-            //     oneRocket.rocket_name == launch.upcoming})
-        },
+    },
+    computed:{
+            nextLaunchDateCompute(){
+            return this.$store.state.launches.filter(launches => launches.upcoming == true)[0].launch_date_utc
+        }
+
     },
     mounted(){
         this.createCountdownClock()
-        this.getNextLaunchDate()
     }
 }
 </script>
 
 <style scoped>
-.header {
-    width: 100%;
-    height: 400px;
-    padding-top: 25%;
-    background-position: center;
-    background-size:auto;
-    background-image: url("~@/assets/headerIMG.jpg");
-    -webkit-transition: background-image 200ms ease-in-out;
-    -moz-transition: background-image 200ms ease-in-out;
-    -o-transition: background-image 200ms ease-in-out;
-    transition: background-image 200ms ease-in-out;
-    text-align: center;
-    vertical-align: middle;
 
-}
 .logo {
     width: 50%
 }
@@ -79,8 +64,8 @@ export default {
     right:0;
 }
 
-.countdown{
-    position:fixed
+.countdownMargin{
+    width: 200px
 }
 </style>
 
