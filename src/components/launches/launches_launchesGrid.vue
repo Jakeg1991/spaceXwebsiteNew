@@ -50,7 +50,6 @@ export default {
     },
     mounted() {
         this.sortLaunches
-        console.log(this.sortedLaunches)
     }
 }
 </script>

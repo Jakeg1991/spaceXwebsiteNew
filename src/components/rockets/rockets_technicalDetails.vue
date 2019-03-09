@@ -28,17 +28,17 @@
     <HR/>
     <div class="techInfo">
     <p>Engine Type: {{rocketsData[0].engines.type}}</p>
-    <br>
     <p>Engine Layout: {{rocketsData[0].engines.layout}}</p>
+    <p>Nº of Engine(s): {{rocketsData[0].engines.number}}</p>
     <br>
     <p>Propellant 1: {{rocketsData[0].engines.propellant_1}}</p>
     <p>Propellant 2: {{rocketsData[0].engines.propellant_2}}</p>
     <br>
-    <p>Thrust at Sea Level(kiloNewtons): {{rocketsData[0].engines.thrust_sea_level.kN}}</p>
-    <p>Thrust at Sea Level(Pound-force): {{rocketsData[0].engines.thrust_sea_level.lbf}}</p>
+    <p>Thrust at Sea Level(kiloNewtons): {{rocketsData[0].engines.thrust_sea_level.kN}} per engine</p>
+    <p>Thrust at Sea Level(Pound-force): {{rocketsData[0].engines.thrust_sea_level.lbf}} per engine</p>
     <br>
-    <p>Thrust in Vacuum(kiloNewtons): {{rocketsData[0].engines.thrust_vacuum.kN}}</p>
-    <p>Thrust in Vacuum(Pound-force): {{rocketsData[0].engines.thrust_vacuum.lbf}}</p>
+    <p>Thrust in Vacuum(kiloNewtons): {{rocketsData[0].engines.thrust_vacuum.kN}} per engine</p>
+    <p>Thrust in Vacuum(Pound-force): {{rocketsData[0].engines.thrust_vacuum.lbf}} per engine</p>
 </div>
   </div>
     <div class="componentContainerInner">

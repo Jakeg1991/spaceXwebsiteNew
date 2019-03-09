@@ -26,15 +26,15 @@ export default {
 </script>
 
 <style>
-.rocketGraphicContainer{
+.rocketGraphicContainer {
   height: 500px;
   width: 100%;
   background-color: black;
   margin: 5px;
-border-radius: 5px;
-padding: 10px;
-    border: 1px;
-    border-style: solid
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px;
+  border-style: solid
 }
 </style>
 

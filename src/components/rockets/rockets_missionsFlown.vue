@@ -39,7 +39,7 @@ export default {
         justify-content: center;
     }
     .missionPatchRocket:hover {
-        transform: scale(3.5);
+        transform: scale(2.75);
     }
 </style>
 
