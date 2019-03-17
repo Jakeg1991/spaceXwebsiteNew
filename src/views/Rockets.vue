@@ -46,12 +46,13 @@ export default {
 
     retrieveStoreData() {
       this.rocketsData = this.$store.state.rockets
-      console.log(this.$store.state.rockets)
     },
     filterRockets(rocket) {
-      this.chosenRocketData = this.$store.state.rockets.filter(oneRocket => oneRocket.rocket_name == rocket)
-      this.chosenRocketMissionData = this.$store.state.launches.filter(oneLaunch =>
-        oneLaunch.rocket.rocket_name == rocket)
+      this.chosenRocketData = this.$store.state.rockets
+      .filter(oneRocket => oneRocket.rocket_name == rocket)
+      
+      this.chosenRocketMissionData = this.$store.state.launches
+      .filter(oneLaunch => oneLaunch.rocket.rocket_name == rocket)
     },
 //     filterMissions(rocket) {
 // console.log( this.chosenRocketMissionData = this.$store.state.launches.rocket.rocket_name.filter((oneMission) => {

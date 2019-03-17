@@ -161,11 +161,11 @@ export default {
   }
 
   .componentContainer {
-    margin: 30px;
+    margin: 15px;
   }
 
   .componentContainerInner {
-    margin: 5px;
+    margin: 10px;
     width: 100%;
     background-color: var(--innercolor);
     border-radius: 5px;

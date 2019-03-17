@@ -14,7 +14,7 @@
     <p>Mass(Pounds): {{rocketsData[0].mass.lb}}</p>
     <br>
     <p>Payload Orbit: {{rocketsData[0].payload_weights[0].name}}</p>
-    <p>Payload Weight(Kilograms)): {{rocketsData[0].payload_weights[0].kg}}</p>
+    <p>Payload Weight(Kilograms): {{rocketsData[0].payload_weights[0].kg}}</p>
     <p>Payload Weight(Pounds): {{rocketsData[0].payload_weights[0].lb}}</p>
     <br>
     <p>Diameter(Ft): {{rocketsData[0].diameter.feet}}</p>
