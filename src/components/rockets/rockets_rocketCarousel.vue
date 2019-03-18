@@ -1,8 +1,9 @@
 <template>
   <div class="componentContainer">
-    <p>{{this.youtubeLink}}</p>
-        <h3>MEDIA</h3>
+        <h2>MEDIA</h2>
     <div class="flexBoxWrapper">
+    <div class="componentContainerInner">
+    <p>{{this.youtubeLink}}</p>
     <div class="componentContainerCarousel">
     <v-carousel :cycle="false">
       <v-carousel-item v-for="(item,i) in this.rocketsData[0].flickr_images" :key="i" :src="item" reverse-transition="fade"
@@ -14,6 +15,7 @@
 <iframe width="100%" height="100%" v-bind:src="this.youtubeLinkCompute" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
   </div>
+</div>
 </div>
   </div>
 </template>

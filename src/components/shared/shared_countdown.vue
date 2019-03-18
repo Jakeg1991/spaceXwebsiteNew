@@ -1,7 +1,7 @@
 <template>
 <div class="countdownContainer">
-<h3 class="countdownMargin" id="nextLaunchText"></h3>
-<h3 class="countdownMargin" id="countdown"></h3>
+<h2 class="countdownMargin" id="nextLaunchText"></h2>
+<h2 class="countdownMargin" id="countdown"></h2>
 </div>
 </template>
 
@@ -41,7 +41,7 @@ export default {
 .countdownContainer {
     display: flex;
     justify-content: flex-start;
-    margin: 0px 30px 10px 0px;
+    margin: 0px 80px 10px 0px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -55,7 +55,7 @@ export default {
     }
 }
 .countdownMargin {
-    width: 150px;
+    width: 200px;
     opacity: 1;
     animation-name: fadeInOpacity;
     animation-iteration-count: 1;

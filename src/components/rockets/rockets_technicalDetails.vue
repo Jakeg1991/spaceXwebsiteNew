@@ -1,11 +1,13 @@
 <template>
 <div class="componentContainer">
-  <H3> TECHNICAL DETAILS</H3>
+  <H2> TECHNICAL DETAILS</H2>
   <div class="flexBoxWrapper">
+
   <div class="componentContainerInner">
+    <div class="infoHeaderContainer">
     <h3>General</h3>
-    <HR/>
-    <div class="techInfo">
+    </div>
+    <div class="infoBox">
     <p>Stages: {{rocketsData[0].stages}}</p>
     <p>Landing Legs: {{rocketsData[0].landing_legs.number}}</p>
     <p>Boosters: {{rocketsData[0].boosters}}</p>
@@ -23,10 +25,12 @@
     <p>Height(Feet): {{rocketsData[0].height.feet}}</p>
     </div>
   </div>
+
     <div class="componentContainerInner">
-    <H3>Engines</H3>
-    <HR/>
-    <div class="techInfo">
+      <div class="infoHeaderContainer">
+    <h3>Engines</h3>
+    </div>
+    <div class="infoBox">
     <p>Engine Type: {{rocketsData[0].engines.type}}</p>
     <p>Engine Layout: {{rocketsData[0].engines.layout}}</p>
     <p>Nº of Engine(s): {{rocketsData[0].engines.number}}</p>
@@ -34,17 +38,20 @@
     <p>Propellant 1: {{rocketsData[0].engines.propellant_1}}</p>
     <p>Propellant 2: {{rocketsData[0].engines.propellant_2}}</p>
     <br>
-    <p>Thrust at Sea Level(kiloNewtons): {{rocketsData[0].engines.thrust_sea_level.kN}} per engine</p>
-    <p>Thrust at Sea Level(Pound-force): {{rocketsData[0].engines.thrust_sea_level.lbf}} per engine</p>
+    <p>Thrust/Sea Level(kiloNewtons): {{rocketsData[0].engines.thrust_sea_level.kN}} per engine</p>
+    <p>Thrust/Sea Level(Pound-force): {{rocketsData[0].engines.thrust_sea_level.lbf}} per engine</p>
     <br>
-    <p>Thrust in Vacuum(kiloNewtons): {{rocketsData[0].engines.thrust_vacuum.kN}} per engine</p>
-    <p>Thrust in Vacuum(Pound-force): {{rocketsData[0].engines.thrust_vacuum.lbf}} per engine</p>
+    <p>Thrust/Vacuum(kiloNewtons): {{rocketsData[0].engines.thrust_vacuum.kN}} per engine</p>
+    <p>Thrust/Vacuum(Pound-force): {{rocketsData[0].engines.thrust_vacuum.lbf}} per engine</p>
 </div>
   </div>
+
     <div class="componentContainerInner">
+            <div class="infoHeaderContainer">
     <H3>Other</H3>
-    <HR/>
-    <div class="techInfo">
+            </div>
+
+    <div class="infoBox">
     <p>Currently Active: {{rocketsData[0].active}}</p>
     <p>Cost per Launch: ${{rocketsData[0].cost_per_launch}}</p>
     <p>Country of Origin: {{rocketsData[0].country}}</p>
@@ -62,14 +69,6 @@ export default {
 </script>
 
 <style>
-.flexBoxWrapper{
-  display: flex;
-  width: 100%;
-  justify-content:space-around
-}
-.techInfo{
-  margin: 7px
-}
 </style>
 
 

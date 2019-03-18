@@ -1,12 +1,14 @@
 <template>
-<div class="componentContainer">
-    <h3>MISSIONS FLOWN</h3>
+<div v-if="this.chosenRocketMissionData.filter(missions => missions.upcoming == false).length >0" class="componentContainer">
+    <h2>MISSIONS FLOWN</h2>
+    <div class="flexBoxWrapper">
     <div class="componentContainerInner">
         <div class="missionsFlownGrid">
-        <div v-for="(launch, index) in this.chosenRocketMissionData" :key="index" class="missionPatchRocket">
+        <div v-for="(launch, index) in this.chosenRocketMissionData.filter(missions => missions.upcoming == false)" :key="index" class="missionPatchRocket">
             <img v-bind:src="launch.links.mission_patch" class="missionPatchRocketIMG"/>
         </div>
         </div>
+</div>
 </div>
 </div>
 </template>
@@ -20,18 +22,19 @@ export default {
 
 <style>
     .missionPatchRocketIMG{
-        height: 75px;
-        width: 75px;
+        height: 125px;
+        width: 125px;
     }
     .missionsFlownGrid {
+        padding: 20px;
         display: flex;
-        align-content: flex-start;
+        align-content: space-around;
         flex-wrap: wrap;
         justify-content: center;
     }
     .missionPatchRocket {
-        height: 80px;
-        width: 80px;
+        height: 125px;
+        width: 125px;
         transition: transform .2s;
         display: flex;
         align-content: center;
@@ -39,7 +42,7 @@ export default {
         justify-content: center;
     }
     .missionPatchRocket:hover {
-        transform: scale(2.75);
+        transform: scale(2);
     }
 </style>
 

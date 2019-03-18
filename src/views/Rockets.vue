@@ -50,7 +50,7 @@ export default {
     filterRockets(rocket) {
       this.chosenRocketData = this.$store.state.rockets
       .filter(oneRocket => oneRocket.rocket_name == rocket)
-      
+
       this.chosenRocketMissionData = this.$store.state.launches
       .filter(oneLaunch => oneLaunch.rocket.rocket_name == rocket)
     },

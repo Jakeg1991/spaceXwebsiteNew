@@ -1,12 +1,18 @@
 <template>
   <v-app>
     <div class="body">
-        <shared_userInfo @logoutClicked="logout()"/>
-        <shared_header ref="header"/>
-        <shared_navBar />
       <div class="fixed">
+        <shared_userInfo @logoutClicked="logout()"/>
+        <shared_navBar />
+        <!-- <shared_header ref="header"/> -->
       </div>
+
+<transition name="swipe" mode="out-in">
+  <keep-alive>
       <router-view @loginRunFunc="login()" @logoutRunFunc="logout()" @redirectFunc="redirect()"/>
+      </keep-alive>
+ </transition>
+
     </div>
   </v-app>
 </template>
@@ -106,12 +112,14 @@ export default {
       if (boonlean == false) {
         document.documentElement.style.setProperty('--bgcolor', "rgba(190, 190, 190)")
         document.documentElement.style.setProperty('--highlightcolor', "rgba(240, 248, 255, 0.9)")
-        document.documentElement.style.setProperty('--innercolor', "rgba(222, 223, 226)")
+        document.documentElement.style.setProperty('--highlightcolor2', "rgba(9, 83, 134, 1)")
+        document.documentElement.style.setProperty('--innercolor', "rgba(255, 255, 255)")
         document.documentElement.style.setProperty('--fontcolor', "rgba(9, 83, 134, 1)")
         document.documentElement.style.setProperty('--utlitybarcolor', " rgba(214, 216, 219, 0.9)")
       } else {
         document.documentElement.style.setProperty('--bgcolor', '#141414')
         document.documentElement.style.setProperty('--highlightcolor',  "rgba(80, 80, 80, 0.9)")
+        document.documentElement.style.setProperty('--highlightcolor2',  "rgba(9, 83, 134, 1)")
         document.documentElement.style.setProperty('--innercolor', '#303030')
         document.documentElement.style.setProperty('--fontcolor', '#e0e0e0')
         document.documentElement.style.setProperty('--utlitybarcolor', ' #303030a9')
@@ -126,53 +134,125 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  :root {
-    --bgcolor: rgba(190, 190, 190);
-    --highlightcolor: rgba(240, 248, 255, 0.9);
-    --innercolor: rgb(222, 223, 226);
-    --fontcolor: rgba(9, 83, 134, 1);
-    --utlitybarcolor: rgba(214, 216, 219, 0.9);
-  }
+<style lang="scss"> :root {
+  --bgcolor: rgba(190, 190, 190);
+  --highlightcolor: rgba(240, 248, 255, 0.9);
+  --highlightcolor2: rgba(9, 83, 134, 1);
+  --innercolor: rgb(255, 255, 255);
+  --fontcolor: rgba(9, 83, 134, 1);
+  --utlitybarcolor: rgba(214, 216, 219, 0.9);
+}
 
-  @font-face {
-    font-family: "bankGothicRegular";
-    src: url('~/../../assets/fonts/bankgothic/bankgothic-regular.ttf');
-    font-weight: 400;
-    font-style: normal;
-  }
+@font-face {
+  font-family: "bankGothicRegular";
+  src: url('~/../../assets/fonts/bankgothic/bankgothic-regular.ttf');
+  font-style: normal;
+}
 
-  p {
-    margin: 0
-  }
+p {
+  margin: 0;
+  text-align: justify;
+}
 
-  br {
-    display: block;
-    content: "";
-    margin-top: 5px;
-  }
+br {
+  display: block;
+  content: "";
+  margin-top: 5px;
+}
 
-  .body {
-    font-family: 'bankGothicRegular', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: var(--bgcolor);
-    color: var(--fontcolor);
-    width: 100%;
-    height: 100%;
-  }
+h3 {
+  color: white
+}
 
-  .componentContainer {
-    margin: 15px;
-  }
+.infoHeaderContainer {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 0px -10px;
+  padding: 15px 15px 5px 15px;
+  min-width: 120px;
+  background-color: var(--highlightcolor2);
+}
 
-  .componentContainerInner {
-    margin: 10px;
-    width: 100%;
-    background-color: var(--innercolor);
-    border-radius: 5px;
-    padding: 10px;
-    border: 1px;
-    border-style: solid
-  }
+h2 {
+  margin: 0px 0px 0px -10px;
+  padding: 10px 10px 0px 10px;
+}
+
+.body {
+  font-family: 'bankGothicRegular', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-image: url("https://www.spacex.com/sites/spacex/files/crew_dragon_iss_resized.jpg");
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-color: var(--bgcolor);
+  color: var(--fontcolor);
+  width: 100%;
+  height: 100%;
+}
+
+.componentContainer {
+  margin: 15px;
+}
+
+.componentContainerInner {
+  margin: 10px;
+  width: 100%;
+  background-color: var(--innercolor);
+  border-radius: 5px;
+  padding: 0px 10px 0px 10px;
+  border: 1px;
+  border-style: solid;
+  display: flex;
+  justify-content: flex-start
+}
+
+.infoBox {
+  margin: 7px;
+  padding: 25px 10px 25px 10px
+}
+
+.flexBoxWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.flexBoxWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around
+}
+
+
+
+//ANIMATIONS
+
+
+.swipe-enter-active {
+  transition: transform 0.45s;
+}
+
+.swipe-leave-active {
+  transition: transform 0.45s;
+}
+
+.swipe-enter {
+  transform: translateX(1500px);
+  opacity: 100;
+}
+
+.swipe-leave-to {
+  transform: translateX(-1500px);
+  opacity: 100;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.25s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
 
 

@@ -1,11 +1,13 @@
 <template>
-<v-parallax dark src="https://www.spacex.com/sites/spacex/files/crew_dragon_iss_resized.jpg">
+<!-- <v-parallax dark src="https://www.spacex.com/sites/spacex/files/crew_dragon_iss_resized.jpg"> -->
+<!-- <div class="header">
     <v-layout align-center column justify-center>
-        <img src="~/../../assets/SpaceX-Logo.svg" alt="SpaceXlogo" class="logo">
-        <h4 class="subheading">technical information resource</h4>
+        <img src="~/../../assets/SpaceX-Logo.svg" alt="SpaceX" class="logo">
+        <h2>Technical Information Resource</h2>
         <shared_countdown ref="countdown"/>
     </v-layout>
-</v-parallax>
+    </div> -->
+<!-- </v-parallax> -->
 </template>
 
 <script>
@@ -30,6 +32,11 @@ export default {
 
 .logo {
     width: 850px
+}
+.header{
+    height: 350px;
+    background-color: var(--innercolor);
+    display: flex
 }
 </style>
 
