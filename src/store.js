@@ -58,7 +58,7 @@ export default new Vuex.Store({
       commit('setLogin')
     },
 
-    changeDarkmode({
+    changeDarkMode({
       commit
     }, plan) {
       commit('setDarkmode')

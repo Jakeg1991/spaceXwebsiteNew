@@ -2,12 +2,11 @@
   <div class="componentContainer">
         <h2>MEDIA</h2>
     <div class="flexBoxWrapper">
-    <div class="componentContainerInner">
-    <p>{{this.youtubeLink}}</p>
+    <div class="componentContainerFilter">
     <div class="componentContainerCarousel">
-    <v-carousel :cycle="false">
+    <v-carousel :cycle="false" dark>
       <v-carousel-item v-for="(item,i) in this.rocketsData[0].flickr_images" :key="i" :src="item" reverse-transition="fade"
-        transition="fade" dark></v-carousel-item>
+        transition="fade"></v-carousel-item>
     </v-carousel>
     </div>
   <div class="componentContainerCarousel">
@@ -51,7 +50,6 @@ export default {
 .componentContainerCarousel{
   width: 100%;
   margin: 5px;
-border-radius: 5px;
 padding: 10px;
 
 

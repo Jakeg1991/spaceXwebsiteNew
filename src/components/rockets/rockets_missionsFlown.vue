@@ -2,7 +2,7 @@
 <div v-if="this.chosenRocketMissionData.filter(missions => missions.upcoming == false).length >0" class="componentContainer">
     <h2>MISSIONS FLOWN</h2>
     <div class="flexBoxWrapper">
-    <div class="componentContainerInner">
+    <div class="componentContainerFilter">
         <div class="missionsFlownGrid">
         <div v-for="(launch, index) in this.chosenRocketMissionData.filter(missions => missions.upcoming == false)" :key="index" class="missionPatchRocket">
             <img v-bind:src="launch.links.mission_patch" class="missionPatchRocketIMG"/>

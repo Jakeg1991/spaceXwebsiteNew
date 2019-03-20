@@ -1,8 +1,8 @@
 <template>
-<div class="componentContainer">
+<div class="componentContainerLogin">
         <p class="chatWelcomeText">Please Login with a Google account to continue.</p>
         <div class="buttonWrapper">
-          <button v-on:click="login()"> Login </button>
+          <v-btn flat color="success" v-on:click="login()"> Login </v-btn>
       </div>
   </div>
 </template>
@@ -26,4 +26,12 @@ export default {
       }
       }
 </script>
+
+<style>
+componentContainerLogin{
+    position: absolute;
+    top: 300px
+}
+</style>
+
 

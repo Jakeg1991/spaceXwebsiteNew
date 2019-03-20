@@ -1,4 +1,5 @@
 <template>
+<div class="pageSpacer">
 <div>
 <div class="componentContainer">
 <rockets_rocketSelector ref="rocketSelector" :rocketsData="this.$store.state.rockets"/>
@@ -7,11 +8,10 @@
 <rockets_technicalDetails ref="technicalDetails" :rocketsData="this.chosenRocketData"/>
 <rockets_missionsFlown ref="missionsFlown" :chosenRocketMissionData="this.chosenRocketMissionData"/>
 </div>
-<shared_footer/>
+</div>
 </div>
 </template>
 <script>
-import shared_footer from '@/components/shared/shared_footer.vue';
 import rockets_technicalDetails from '@/components/rockets/rockets_technicalDetails.vue';
 import rockets_rocketSelector from '@/components/rockets/rockets_rocketSelector.vue';
 import rockets_rocketCarousel from '@/components/rockets/rockets_rocketCarousel.vue';
@@ -32,7 +32,6 @@ export default {
     rockets_rocketSelector,
     rockets_rocketCarousel,
     rockets_generalInfo,
-    shared_footer
   },
   methods: {
     redirectPage() {
@@ -63,6 +62,7 @@ export default {
   },
   created() {
     this.retrieveStoreData()
+    this.redirectPage()
   },
   mounted() {
     this.redirectPage()

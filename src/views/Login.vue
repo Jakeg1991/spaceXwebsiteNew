@@ -1,6 +1,5 @@
 <template>
 <div class="componentContainer">
-<h1>LOGIN</h1>
 <login_LoginQuery @loginClicked="runLogin()"/>
 </div>
 </template>

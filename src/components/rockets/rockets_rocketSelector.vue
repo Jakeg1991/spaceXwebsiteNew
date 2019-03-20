@@ -39,8 +39,8 @@ export default {
 .componentContainerSelector{
     margin: 10px;
     width: 380px;
-    background-color: var(--highlightcolor2);
-    border-radius: 5px;
+    background-color: var(--utlitybarcolor);
+    border-radius: 7px;
     padding: 0px 10px 0px 10px;
     border: 1px;
     border-style: solid;

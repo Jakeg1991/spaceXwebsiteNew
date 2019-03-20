@@ -1,6 +1,6 @@
 <template>
 <div class="componentContainer">
-    <h2>PAST LAUNCHES</h2>
+    <h2>SPACEX LAUNCH BROWSER</h2>
 <div class="flexBoxWrapper">
     <div class="componentContainerFilter">
         <div class="filterOptionContainer">
@@ -35,27 +35,25 @@
     <v-btn v-on:click="test()">TEST</v-btn>
     </div>
 </div>
-<div v-if="!this.sortLaunches.length > 0">
 
+<div class="launchesPatchGrid">
 
+<transition name="fade">
 
-  <div class="flexBoxWrapper">
-    <div class="componentContainerNoResults">
-NO RESULTS -- PLEASE UPDATE FILTER
-      </div>
-    </div>
-
-
-
-
+<div v-if="!this.sortLaunches.length > 0" class="noResultWarn">
+<p strong> NO RESULTS -- PLEASE UPDATE FILTER... </p>
 </div>
-<div v-else>
-    <div class="launchesPatchGrid">
-        <div v-for="(launch, index) in this.sortLaunches" :key="index">
-            {{index}}
+</transition>
+        <transition-group name="swipe" class="gridFlex">
+
+
+
+        <div v-for="(launch) in this.sortLaunches" :key="launch">
             <launches_oneLaunch ref="oneLaunch" :launch="launch" :key="launch.flight_number" />
         </div>
-    </div>
+
+
+        </transition-group>
 </div>
 </div>
 </template>
@@ -105,31 +103,38 @@ export default {
 </script>
 
 <style>
-.componentContainerNoResults {
-    min-height: 100px;
-    margin: 10px;
-    width: 100%;
-    background-color: var(--innercolor);
-    border-radius: 5px;
-    padding: 0px 10px 0px 10px;
-    border: 1px;
-    border-style: solid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-.launchesPatchGrid{
-  display: flex;
-  align-content:flex-start;
-  flex-wrap: wrap;
-  justify-content:center;
+.noResultWarn{
+margin: 10px;
+position: absolute
 }
 
-.filterOptionContainer{
-     border: 1px;
+.gridFlex {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.launchesPatchGrid {
+    margin: 0px 10px 0px 10px;
+    padding: 0px 15px 15px 15px;
+    /* overflow-y: scroll;
+    overflow-x:hidden;
+    max-height: 500px; */
+    transform-origin:top;
+    transform:scaleY(1);
+    transition:transform 0.3s ease-out;
+
+
+    min-height: 45px;
+
+    height: auto;
+}
+
+.filterOptionContainer {
+    border: 1px;
     border-style: solid;
-    border-radius: 5px;
+    border-radius: 7px;
     padding: 5px;
     margin: 10px;
     background-color: rgba(240, 248, 255, 0.9);
@@ -137,17 +142,29 @@ export default {
     display: inline-block;
 }
 
-  .componentContainerFilter {
+.componentContainerFilter {
     margin: 10px;
     width: 100%;
-    background-color: var(--highlightcolor2);
-    border-radius: 5px;
+    background-color: var(--utlitybarcolor);
+    border-radius: 7px;
     padding: 0px 10px 0px 10px;
     border: 1px;
     border-style: solid;
     display: flex;
     justify-content: flex-start
-  }
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
 </style>
 
 

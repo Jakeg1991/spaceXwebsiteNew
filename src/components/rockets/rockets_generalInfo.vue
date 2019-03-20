@@ -24,6 +24,7 @@
     </div>
     <div class="componentContainerInner">
       <div class="infoHeaderContainer">
+        
       <h3>{{rocketsData[0].rocket_name}}</h3>
       </div>
       <div class="infoBox">
@@ -62,10 +63,11 @@ position:initial
 .rocketGraphicContainer {
   height: 500px;
   min-width: 300px;
+  max-width: 300px;
   width: 100%;
   background-color: black;
   margin: 20px 15px 20px 5px;
-  border-radius: 5px;
+  border-radius: 7px;
   padding: 10px;
   border: 1px;
   border-style: solid

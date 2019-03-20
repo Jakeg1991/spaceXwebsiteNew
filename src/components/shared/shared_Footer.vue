@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="pa-3" color="rgba(9, 83, 134, 1)">
+  <v-footer class="pa-3 footer" color="rgba(9, 83, 134, 0.9)">
     <v-spacer></v-spacer>
     <div>&copy; {{ new Date().getFullYear() }}</div>
   </v-footer>
@@ -11,3 +11,13 @@
     components: {},
   }
 </script>
+
+
+<style>
+
+.footer{
+ position: fixed;
+ bottom: 0;
+ width: 100%;}
+
+</style>
