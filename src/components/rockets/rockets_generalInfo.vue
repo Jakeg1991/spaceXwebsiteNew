@@ -33,13 +33,11 @@
         </p>
       </div>
       <div class="rocketGraphicContainer">
-        <transition name="fade" mode="out-in">
         <img key=1 v-if="rocketsData[0].rocket_name == 'Falcon 1'" src="@/assets/falcon1Graphic.jpg" alt="" class="rocketImage">
         <img key=2 v-else-if="rocketsData[0].rocket_name == 'Falcon 9'" src="@/assets/falcon9Graphic.jpg" alt="" class="rocketImage">
         <img key=3 v-else-if="rocketsData[0].rocket_name == 'Falcon Heavy'" src="@/assets/falconHGraphic.jpg" alt="" class="rocketImage">
         <img key=4 v-else-if="rocketsData[0].rocket_name == 'Big Falcon Rocket'" src="@/assets/BFRGraphic.jpg" alt="" class="rocketImage">
         <img key=5 v-else src="@/assets/RocketPlaceHolder.jpg" alt="" class="rocketImage">
-        </transition>
         </div>
       </div>
     </div>

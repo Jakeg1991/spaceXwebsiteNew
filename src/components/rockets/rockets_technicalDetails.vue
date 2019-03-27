@@ -2,28 +2,45 @@
 <div class="componentContainer">
   <H2> TECHNICAL DETAILS</H2>
   <div class="flexBoxWrapper">
+    <div class="componentContainerInner">
+      <div class="infoHeaderContainer">
+        <h3>General</h3>
+      </div>
+      <div class="infoBox">
+        <div class="infoDivider">
+          <div style="padding-right:10px">
+            <p>Stages:</p>
+            <p>Landing Legs:</p>
+            <p>Boosters:</p>
 
-  <div class="componentContainerInner">
-    <div class="infoHeaderContainer">
-    <h3>General</h3>
-    </div>
-    <div class="infoBox">
-    <p>Stages: {{rocketsData[0].stages}}</p>
-    <p>Landing Legs: {{rocketsData[0].landing_legs.number}}</p>
-    <p>Boosters: {{rocketsData[0].boosters}}</p>
-    <br>
-    <p>Mass(Kilograms): {{rocketsData[0].mass.kg}}</p>
-    <p>Mass(Pounds): {{rocketsData[0].mass.lb}}</p>
-    <br>
-    <p>Payload Orbit: {{rocketsData[0].payload_weights[0].name}}</p>
-    <p>Payload Weight(Kilograms): {{rocketsData[0].payload_weights[0].kg}}</p>
-    <p>Payload Weight(Pounds): {{rocketsData[0].payload_weights[0].lb}}</p>
-    <br>
-    <p>Diameter(Ft): {{rocketsData[0].diameter.feet}}</p>
-    <p>Diameter(Mtrs): {{rocketsData[0].diameter.meters}}</p>
-    <p>Height(Meters): {{rocketsData[0].height.meters}}</p>
-    <p>Height(Feet): {{rocketsData[0].height.feet}}</p>
-    </div>
+            <p>Mass:</p>
+            <br>
+
+            <p>Payload Orbit:</p>
+            <p>Payload Weight:</p>
+            <br>
+
+            <p>Diameter:</p>
+            <br>
+            <p>Height:</p>
+            <br>
+          </div>
+          <div>
+            <p>{{rocketsData[0].stages}}</p>
+            <p>{{rocketsData[0].landing_legs.number}}</p>
+            <p>{{rocketsData[0].boosters}}</p>
+            <p>{{rocketsData[0].mass.kg}} kG</p>
+            <p>{{rocketsData[0].mass.lb}} Lb</p>
+            <p>{{rocketsData[0].payload_weights[0].name}}</p>
+            <p>{{rocketsData[0].payload_weights[0].kg}} kG</p>
+            <p>{{rocketsData[0].payload_weights[0].lb}} Lb</p>
+            <p>{{rocketsData[0].diameter.meters}} M</p>
+            <p>{{rocketsData[0].diameter.feet}} Ft</p>
+            <p>{{rocketsData[0].height.meters}} M</p>
+            <p>{{rocketsData[0].height.feet}} Ft</p>
+          </div>
+        </div>
+      </div>
   </div>
 
     <div class="componentContainerInner">
@@ -31,18 +48,37 @@
     <h3>Engines</h3>
     </div>
     <div class="infoBox">
-    <p>Engine Type: {{rocketsData[0].engines.type}}</p>
-    <p>Engine Layout: {{rocketsData[0].engines.layout}}</p>
-    <p>Nº of Engine(s): {{rocketsData[0].engines.number}}</p>
+      <div class="infoDivider">
+        <div style="padding-right:10px">
+    <p>Engine Type:</p>
+    <p>Engine Layout:</p>
+    <p>Nº of Engine(s):</p>
+
+    <p>Propellant 1:</p>
+    <p>Propellant 2:</p>
+
+    <p>Thrust/Sea Level:</p>
     <br>
-    <p>Propellant 1: {{rocketsData[0].engines.propellant_1}}</p>
-    <p>Propellant 2: {{rocketsData[0].engines.propellant_2}}</p>
+
+    <p>Thrust/Vacuum:</p>
     <br>
-    <p>Thrust/Sea Level(kiloNewtons): {{rocketsData[0].engines.thrust_sea_level.kN}} per engine</p>
-    <p>Thrust/Sea Level(Pound-force): {{rocketsData[0].engines.thrust_sea_level.lbf}} per engine</p>
-    <br>
-    <p>Thrust/Vacuum(kiloNewtons): {{rocketsData[0].engines.thrust_vacuum.kN}} per engine</p>
-    <p>Thrust/Vacuum(Pound-force): {{rocketsData[0].engines.thrust_vacuum.lbf}} per engine</p>
+    </div>
+
+    <div>
+    <p>{{rocketsData[0].engines.type}}</p>
+    <p>{{rocketsData[0].engines.layout}}</p>
+    <p>{{rocketsData[0].engines.number}}</p>
+
+    <p>{{rocketsData[0].engines.propellant_1}}</p>
+    <p>{{rocketsData[0].engines.propellant_2}}</p>
+
+    <p>{{rocketsData[0].engines.thrust_sea_level.kN}} kN x {{rocketsData[0].engines.number}}</p>
+    <p>{{rocketsData[0].engines.thrust_sea_level.lbf}} lbf x {{rocketsData[0].engines.number}}</p>
+
+    <p>{{rocketsData[0].engines.thrust_vacuum.kN}} kN x {{rocketsData[0].engines.number}}</p>
+    <p>{{rocketsData[0].engines.thrust_vacuum.lbf}} lbf x {{rocketsData[0].engines.number}}</p>
+    </div>
+</div>
 </div>
   </div>
 
@@ -52,10 +88,21 @@
             </div>
 
     <div class="infoBox">
-    <p>Currently Active: {{rocketsData[0].active}}</p>
-    <p>Cost per Launch: ${{rocketsData[0].cost_per_launch}}</p>
-    <p>Country of Origin: {{rocketsData[0].country}}</p>
-    <p>Success Rate: {{rocketsData[0].success_rate_pct}}%</p>
+    <div class="infoDivider">
+      <div style="padding-right:10px">
+    <p>Currently Active:</p>
+    <p>Cost per Launch:</p>
+    <p>Country of Origin:</p>
+    <p>Success Rate:</p>
+    </div>
+      <div>
+    <p v-if="rocketsData[0].active == false">No</p>
+    <p v-else>Yes</p>
+    <p>${{rocketsData[0].cost_per_launch}}</p>
+    <p>{{rocketsData[0].country}}</p>
+    <p>{{rocketsData[0].success_rate_pct}}%</p>
+    </div>
+    </div>
   </div>
   </div>
   </div>
@@ -68,7 +115,15 @@ export default {
   props: ['rocketsData'],}
 </script>
 
-<style>
+<style scoped>
+
+p:after {
+  content:"";
+  display:inline-block;
+  width:0px;
+}
+
 </style>
+
 
 

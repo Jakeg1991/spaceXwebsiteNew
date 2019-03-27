@@ -1,45 +1,42 @@
 <template>
-<div class="pageSpacer">
-<div class="componentContainer">
-<launches_launchesGrid/>
-</div>
-</div>
+  <div class="pageSpacer" v-show="this.$store.state.loggedIn == true">
+      <div class="componentContainer">
+        <launches_launchesGridWithFilter ref="launchesGrid" :launchesData="this.launchesData" />
+      </div>
+  </div>
 </template>
 
 <script>
-import launches_launchesGrid from '@/components/launches/launches_launchesGrid.vue';
-
+import launches_launchesGridWithFilter from '@/components/launches/launches_launchesGridWithFilter.vue';
 export default {
   name: 'launches',
   components: {
-    launches_launchesGrid,
+    launches_launchesGridWithFilter,
   },
   data() {
     return {
-      pastLaunches: [],
+      dataFetched: false,
+      launchesData: undefined,
     }
   },
   methods: {
+    showData() {
+        this.launchesData = this.$store.state.launchesData
+    },
     redirectPage() {
       if (this.$store.state.loggedIn == false) {
         this.$emit('redirectFunc')
       }
-    },
-    retrieveStoreData() {
-      this.pastLaunches = this.$store.state.launches
     },
     runLogout() {
       this.$emit('logoutRunFunc')
     },
   },
   mounted() {
+    this.showData()
     this.redirectPage()
   },
-  created() {
-    this.retrieveStoreData()
-    this.redirectPage()
-  },}
-
+}
 </script>
 
 <style>

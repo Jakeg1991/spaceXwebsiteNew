@@ -1,10 +1,14 @@
 <template>
-<div class="componentContainerLogin">
-        <p class="chatWelcomeText">Please Login with a Google account to continue.</p>
-        <div class="buttonWrapper">
-          <v-btn flat color="success" v-on:click="login()"> Login </v-btn>
-      </div>
-  </div>
+<div>
+    <v-card class="componentContainerLogin" elevation-50  color="rgba(9, 83, 134, 0.9)" v-if="this.$store.state.loggedInSuccessfulMsg == false">
+        <h5>Please Login with a Google account to continue.</h5>
+        <v-btn flat color="success" v-on:click="login()"> Login </v-btn>
+    </v-card>
+        <v-card v-else div class="componentContainerLogin" elevation-50 color="rgba(9, 83, 134, 0.9)">
+            <h5>Login Successful. Redirecting...</h5>
+            <img src="./../../assets/spinner.svg" alt="spinner" class="spinner">
+        </v-card>
+    </div>
 </template>
 
 <script>
@@ -13,24 +17,36 @@ import "firebase/auth";
 import "firebase/database";
 
 export default {
-  name: "login_LoginQuery",
-      components: {
-      },
-      data() {
-          return {};
-      },
-      methods: {
-          login() {
-              this.$emit("loginClicked")
-          },
-      }
-      }
+    name: "login_LoginQuery",
+    components: {},
+    data() {
+        return {};
+    },
+    methods: {
+        login() {
+            this.$emit("loginClicked")
+        },
+    }
+}
 </script>
 
 <style>
-componentContainerLogin{
-    position: absolute;
-    top: 300px
+.componentContainerLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    height: 125px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+    padding: 0px 10px 0px 10px;
+}
+.spinner {
+    height: 50px;
+    margin: 10px
 }
 </style>
 

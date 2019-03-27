@@ -5,9 +5,9 @@
         <v-switch :label="`Dark Mode`" v-on:change="changeDarkMode()" v-bind:value="darkmode" dark></v-switch>
     </v-flex>
     <v-layout align-center justify-center row fill-height>
-        <img class="avatar" v-bind:src="this.$store.state.userInfo.photoURL" />
+        <img class="avatar" v-bind:src="this.$store.state.userData.photoURL" />
         <v-flex>
-            Logged In: {{this.$store.state.userInfo.displayName}}
+            Logged In: {{this.$store.state.userData.displayName}}
         </v-flex>
         <v-btn small v-on:click="logout()"> Logout </v-btn>
     </v-layout>
@@ -32,11 +32,11 @@
       <v-list class="pa-1">
         <v-list-tile avatar>
           <v-list-tile-avatar>
-            <img v-bind:src="this.$store.state.userInfo.photoURL" />
+            <img v-bind:src="this.$store.state.userData.photoURL" />
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title class="loginName">{{this.$store.state.userInfo.displayName}}</v-list-tile-title>
+            <v-list-tile-title class="loginName">{{this.$store.state.userData.displayName}}</v-list-tile-title>
           </v-list-tile-content>
     <v-btn small v-on:click="logout()"> Logout </v-btn>
 <v-btn small v-on:click="test()"> Test </v-btn>
@@ -140,7 +140,7 @@ width: 100%;
     margin: 25px auto auto 80px;
 }
 
-.userInfo{
+.userData{
     display: flex;
     flex-flow: row;
     align-items: center

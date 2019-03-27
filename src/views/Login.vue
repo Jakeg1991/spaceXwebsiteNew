@@ -1,6 +1,7 @@
 <template>
 <div class="componentContainer">
 <login_LoginQuery @loginClicked="runLogin()"/>
+<!-- <img src="@/../../../assets/SpaceX-Logo.svg" alt="SpaceXlogo" class="logo"> -->
 </div>
 </template>
 
@@ -18,3 +19,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>

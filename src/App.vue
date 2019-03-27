@@ -8,13 +8,12 @@
         </div>
         </transition>
         <!-- <shared_userInfo @logoutClicked="logout()" :drawer="this.drawer"/> -->
-        <!-- <shared_header ref="header"/> -->
       </div>
 
 
-  <keep-alive>
-      <router-view @loginRunFunc="login()" @logoutRunFunc="logout()" @redirectFunc="redirect()"/>
-      </keep-alive>
+<keep-alive>
+      <router-view @loginRunFunc="login()" @logoutRunFunc="logout()" @redirectFunc="redirectLogin()"/>
+</keep-alive>
 
          <transition name="fade">
         <div v-if="this.$store.state.loggedIn == true">
@@ -29,7 +28,6 @@
 import firebase from "firebase/app";
 import shared_userInfo from '@/components/shared/shared_userInfo.vue';
 import shared_navBar from '@/components/shared/shared_navBar.vue';
-import shared_header from '@/components/shared/shared_header.vue';
 import shared_footer from '@/components/shared/shared_footer.vue';
 import "firebase/auth";
 import "firebase/database";
@@ -52,10 +50,9 @@ export default {
       drawer: false,
     }
   },
-  components:{
+  components: {
     shared_userInfo,
     shared_navBar,
-    shared_header,
     shared_footer
   },
   computed: {
@@ -77,31 +74,26 @@ export default {
     },
     darkModeCompute(newCompute) {
       if (newCompute == true) {
-
         document.documentElement.style.setProperty('--bgcolor', "rgba(190, 190, 190)")
         document.documentElement.style.setProperty('--highlightcolor', "rgba(9, 83, 134, 0.9)")
-        document.documentElement.style.setProperty('--highlightcolor2', "rgba(255, 255, 255, 1)")
         document.documentElement.style.setProperty('--innercolor', "rgba(255, 255, 255)")
         document.documentElement.style.setProperty('--fontcolor', "rgba(9, 83, 134, 1)")
         document.documentElement.style.setProperty('--utlitybarcolor', " rgba(9, 83, 134, 0.9)")
         document.documentElement.style.setProperty('--bgimage', "url('https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/2014_-_10_replacement_-_iss039e021507.jpg?itok=4y_yxHSD')")
 
       } else {
-        
         document.documentElement.style.setProperty('--bgcolor', 'rgb(20,20,20)')
-        document.documentElement.style.setProperty('--highlightcolor',  "rgba(80, 80, 80, 0.9)")
-        document.documentElement.style.setProperty('--highlightcolor2',  "rgba(9, 83, 134, 1)")
+        document.documentElement.style.setProperty('--highlightcolor', "rgba(80, 80, 80, 0.9)")
         document.documentElement.style.setProperty('--innercolor', 'rgb(61,61,61)')
         document.documentElement.style.setProperty('--fontcolor', 'rgb(224,224,224)')
         document.documentElement.style.setProperty('--utlitybarcolor', 'rgba(48,48,48,0.9)')
         document.documentElement.style.setProperty('--bgimage', "url('https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/2013_-_11_vandenberg_sunset_rocket_on_pad.jpg?itok=d6cI50Qk')")
-
       }
     },
   },
   methods: {
 
-    openDrawer(){
+    openDrawer() {
       this.drawer = !this.drawer
     },
 
@@ -112,8 +104,8 @@ export default {
         .signInWithPopup(provider)
         .then(result => {
           this.$store.dispatch('setUserInfo', result.user)
-          this.$store.dispatch('login')
-          this.$router.push('/')
+          this.$store.dispatch('loginSuccessfulMsg')
+          setTimeout(this.loginAndRedirectHome, 3000);
         })
         .catch(function (error) {
           alert("error" + error.message);
@@ -131,22 +123,25 @@ export default {
           alert("alert logout");
         });
     },
-    redirect() {
+    redirectLogin() {
       this.$router.push('/login')
     },
+    loginAndRedirectHome() {
+      this.$router.push('/')
+      this.$store.dispatch('login')
+    },
   },
-  mounted() {
-    this.$store.dispatch('getLaunches')
-    // .then(this.$refs.header.$refs.countdown.createCountdownClock())
-    this.$store.dispatch('getRockets')
-  },
+  created() {
+    this.$store.dispatch('fetchRocketsData'),
+    this.$store.dispatch('fetchLaunchesData')
+    this.$store.dispatch('fetchSpaceXData')
+  }
 }
 </script>
 
 <style lang="scss"> :root {
   --bgcolor: rgba(190, 190, 190);
   --highlightcolor: rgba(9, 83, 134, 0.9);
-  --highlightcolor2: rgb(255, 255, 255);
   --innercolor: rgb(255, 255, 255);
   --fontcolor: rgba(9, 83, 134, 1);
   --utlitybarcolor: rgba(9, 83, 134, 0.9);
@@ -155,7 +150,7 @@ export default {
 
 @font-face {
   font-family: "bankGothicRegular";
-  src: url('~/../../assets/fonts/bankgothic/bankgothic-regular.ttf');
+  src: url('~/../../assets/fonts/bankgothic/bankgothic-regular.ttf') format('truetype');
   font-style: normal;
 }
 
@@ -164,14 +159,15 @@ p {
   text-align: justify;
 }
 
-br {
-  display: block;
-  content: "";
-  margin-top: 5px;
-}
+// br {
+//   // display: block;
+//   // content: "";
+//   // margin-top: 5px;
+// }
 
-h3 {
-  color: white
+h3,h2,h4,h5  {
+  color: white;
+  font-weight: 1;
 }
 
 .infoHeaderContainer {
@@ -184,16 +180,21 @@ h3 {
   border-radius:5px;
 }
 
-h2 {
+h2,h4 {
   margin: 0px 0px 0px -10px;
   padding: 10px 10px 0px 10px;
-  color: white
+}
+
+h5 {
+  margin: 5px;
+  padding: 10px 10px 10px 10px;
+  font-size: 14px;
 }
 
 .body {
   font-family: 'bankGothicRegular', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  // background-image: url("https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/2013_-_11_vandenberg_sunset_rocket_on_pad.jpg?itok=d6cI50Qk");
-  // background-image: url("https://www.spacex.com/sites/spacex/files/crew_dragon_iss_resized.jpg");
+  background-image: url("https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/2013_-_11_vandenberg_sunset_rocket_on_pad.jpg?itok=d6cI50Qk");
+  background-image: url("https://www.spacex.com/sites/spacex/files/crew_dragon_iss_resized.jpg");
   background-image: var(--bgimage);
     background-repeat: no-repeat;
   background-attachment: fixed;
@@ -208,6 +209,8 @@ h2 {
     -o-transition: background 1s;
     transition: background 1s;
 }
+
+
 
 .componentContainer {
   margin: 15px;
@@ -235,12 +238,6 @@ h2 {
 .flexBoxWrapper {
   display: flex;
   width: 100%;
-  justify-content: space-around;
-}
-
-.flexBoxWrapper {
-  display: flex;
-  width: 100%;
   justify-content: space-around
 }
 
@@ -249,49 +246,9 @@ margin: 100px 0px 100px 0px
 }
 
 //ANIMATIONS
-.swipeUp-enter-active {
-  transition: transform 1s;
-}
-
-.swipeUp-leave-active {
-  transition: transform 1s;
-}
-
-.swipeUp-enter {
-  transform: translateY(-100px);
-  opacity: 100;
-}
-
-.swipeUp-leave-to {
-  transform: translateY(-100px);
-  opacity: 100;
-}
-
-.swipe-enter-active {
-  transition: transform 0.45s;
-}
-
-.swipe-leave-active {
-  transition: transform 0.45s;
-}
-
-.swipe-enter {
-  transform: translateX(1500px);
-  opacity: 100;
-}
-
-.swipe-move {
-  transition: transform 1s;
-}
-
-.swipe-leave-to {
-  transform: translateX(-1500px);
-  transition: opacity 0.25s;
-  opacity: 0;
-}
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.25s;
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

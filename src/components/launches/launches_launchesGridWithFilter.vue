@@ -1,25 +1,26 @@
 <template>
-<div class="componentContainer">
-    <h2>SPACEX LAUNCH BROWSER</h2>
+<div>
+<div  v-if="this.$store.state.launchesDataFetched == true" class="componentContainer">
+    <h2>LAUNCH BROWSER</h2>
 <div class="flexBoxWrapper">
     <div class="componentContainerFilter">
         <div class="filterOptionContainer">
             <input type="radio" value=1 v-model="reverseSort">
-            <label for="two"> Sort Descending</label>
+            <label for="two"> Soonest/Recent First</label>
             <br>
             <input type="radio" value=0 v-model="reverseSort">
-            <label for="one"> Sort Ascending</label>
+            <label for="one"> Oldest First</label>
         </div>
 
         <div class="filterOptionContainer">
-            <input type="radio" value="all" v-model="launchUpcomingFilter">
-            <label for="one"> All Launches</label>
+            <input type="radio" value="all"  v-model="launchUpcomingFilter">
+            <label for="all"> All Launches</label>
             <br>
             <input type="radio" value=0 v-model="launchUpcomingFilter">
-            <label for="two"> Past Launches</label>
+            <label for="past"> Past Launches</label>
             <br>
             <input type="radio" value=1 v-model="launchUpcomingFilter">
-            <label for="one"> Upcoming Launches</label>
+            <label for="upcoming"> Upcoming Launches</label>
         </div>
 
         <div class="filterOptionContainer">
@@ -32,23 +33,23 @@
             <input type="radio" value=0 v-model="launchSuccessFilter">
             <label for="one"> Failed Launches</label>
         </div>
-    <v-btn v-on:click="test()">TEST</v-btn>
+    </div>
     </div>
 </div>
 
 <div class="launchesPatchGrid">
 
-<transition name="fade">
+<transition name="fade" mode="out-in">
 
 <div v-if="!this.sortLaunches.length > 0" class="noResultWarn">
 <p strong> NO RESULTS -- PLEASE UPDATE FILTER... </p>
 </div>
 </transition>
-        <transition-group name="swipe" class="gridFlex">
+        <transition-group name="fade" class="gridFlex">
 
 
 
-        <div v-for="(launch) in this.sortLaunches" :key="launch">
+        <div v-for="(launch) in this.sortLaunches" :key="launch.flight_number">
             <launches_oneLaunch ref="oneLaunch" :launch="launch" :key="launch.flight_number" />
         </div>
 
@@ -62,8 +63,8 @@
 import launches_oneLaunch from '@/components/launches/launches_oneLaunch.vue';
 
 export default {
-    name: "pastLaunches",
-    props: [],
+    name: "launches_launchesGridWithFilter",
+    props: ["launchesData"],
     data() {
         return {
             reverseSort: 1,
@@ -76,36 +77,39 @@ export default {
     },
     computed: {
         sortLaunches() {
-            if (this.reverseSort) 
-            {return this.launchesDataFiltered.reverse()} 
-            else
-            {return this.launchesDataFiltered}
+            // if (this.reverseSort) 
+            // {return this.launchesDataFiltered.reverse()} 
+            // else
+            
+                return this.launchesData
+                
         },
-        launchesDataFiltered(){
-            return this.$store.state.launches
-            .filter(launch => launch.upcoming == this.launchUpcomingFilter )
-            .filter(launch => launch.launch_success == this.launchSuccessFilter)
-            // .filter(launch => launch.rocket.rocket_name == "Falcon Heavy")
-            // .filter(launch => launch.mission_name.toUpperCase().includes("HEAVY"))
-            // .filter(launch => launch.launch_site.site_name == "KSC LC 39A")
-        }
 
+        // launchesDataFiltered(){
+        //     return this.launchesData
+        //     .filter(launches => launches.upcoming == this.filterUpcoming())
+        //     // .filter(launch => launch.launch_success == this.launchSuccessFilter)
+        //     // .filter(launch => launch.rocket.rocket_name == "Falcon Heavy")
+        //     // .filter(launch => launch.mission_name.toUpperCase().includes("HEAVY"))
+        //     // .filter(launch => launch.launch_site.site_name == "KSC LC 39A")
+        launchesDataFiltered(){
+            let data = this.launchesData
+            return data
+        }
     },
     methods: {
-        test(){
-            console.log(this.sortLaunches.length)
+        filterUpcoming(){
+            return 1
         }
     },
-    mounted() {
-        this.launchesData = this.$store.state.launches
-    }
 }
 </script>
 
 <style>
 .noResultWarn{
 margin: 10px;
-position: absolute
+position: absolute;
+color: white
 }
 
 .gridFlex {
@@ -118,16 +122,8 @@ position: absolute
 .launchesPatchGrid {
     margin: 0px 10px 0px 10px;
     padding: 0px 15px 15px 15px;
-    /* overflow-y: scroll;
-    overflow-x:hidden;
-    max-height: 500px; */
     transform-origin:top;
-    transform:scaleY(1);
-    transition:transform 0.3s ease-out;
-
-
     min-height: 45px;
-
     height: auto;
 }
 
@@ -151,7 +147,7 @@ position: absolute
     border: 1px;
     border-style: solid;
     display: flex;
-    justify-content: flex-start
+    justify-content: flex-start;
 }
 
 ::-webkit-scrollbar {

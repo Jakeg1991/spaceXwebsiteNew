@@ -6,36 +6,54 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    launches: "DATA NOT FETCHED",
-    rockets: "DATA NOT FETCHED",
+    loggedInSuccessfulMsg: false,
+    launchesDataFetched:false,
+    rocketsDataFetched:false,
+    spaceXDataFetched:false,
     darkMode: false,
     loggedIn: false,
-    userInfo: "DATA NOT FETCHED"
+    launchesData: "DATA NOT FETCHED",
+    rocketsData: "DATA NOT FETCHED",
+    spaceXData: "DATA NOT FETCHED",
+    userData: "DATA NOT FETCHED",
   },
   mutations: {
+    launchesDataFetched(state) {
+      state.launchesDataFetched = true;
+    },
+    rocketsDataFetched(state) {
+      state.rocketsDataFetched = true;
+    },
+    SpaceXDataFetched(state) {
+      state.spaceXData = true;
+    },
+
     setUserInfo(state, payload) {
-      state.userInfo = payload;
+      state.userData = payload;
     },
 
     setLogin(state) {
       state.loggedIn = true
     },
+    setLoginSuccessfulMsg(state) {
+      state.loggedInSuccessfulMsg = true
+    },
     setLogout(state) {
       state.loggedIn = false
+      state.loggedInSuccessfulMsg = false
     },
     setDarkmode(state) {
-      if (state.darkMode == true) {
-        state.darkMode = false
-      } else {
-        state.darkMode = true
-      }
+      state.darkMode = !state.darkMode
     },
 
-    setLaunches(state, payload) {
-      state.launches = payload;
+    setLaunchesData(state, payload) {
+      state.launchesData = payload;
     },
-    setRockets(state, payload) {
-      state.rockets = payload;
+    setRocketsData(state, payload) {
+      state.rocketsData = payload;
+    },
+    setSpaceXData(state, payload) {
+      state.spaceXData = payload;
     }
   },
   actions: {
@@ -48,44 +66,63 @@ export default new Vuex.Store({
 
     logout({
       commit
-    }, plan) {
+    },) {
       commit('setLogout')
     },
 
     login({
       commit
-    }, plan) {
+    },) {
       commit('setLogin')
+    },
+    loginSuccessfulMsg({
+      commit
+    },) {
+      commit('setLoginSuccessfulMsg')
     },
 
     changeDarkMode({
       commit
-    }, plan) {
+    },) {
       commit('setDarkmode')
     },
 
-    async getLaunches({
+    async fetchLaunchesData({
       commit
-    }, plan) {
+    },) {
 
       try {
         let response = await axios.get(`https://api.spacexdata.com/v3/launches`, {});
-        commit('setLaunches', response.data);
+        commit('setLaunchesData', response.data);
+        commit('launchesDataFetched');
       } catch (error) {
-        commit('setLaunches', []);
+        commit('setLaunchesData', "DATA FETCH FAILED");
       }
     },
 
-    async getRockets({
+    async fetchRocketsData({
       state,
       commit
     }, plan) {
       try {
         let response = await axios.get(`https://api.spacexdata.com/v3/rockets`, {});
-        commit('setRockets', response.data);
+        commit('setRocketsData', response.data);
+        commit('rocketsDataFetched');
       } catch (error) {
-        commit('setRockets', []);
+        commit('setRocketsData', "DATA FETCH FAILED");
       }
-    }
+    },
+    async fetchSpaceXData({
+      state,
+      commit
+    }, plan) {
+      try {
+        let response = await axios.get(`https://api.spacexdata.com/v3/info`, {});
+        commit('setSpaceXData', response.data);
+        commit('SpaceXDataFetched');
+      } catch (error) {
+        commit('setSpaceXData', "DATA FETCH FAILED");
+      }
+    },
   }
 })
