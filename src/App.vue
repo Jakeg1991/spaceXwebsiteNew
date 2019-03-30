@@ -135,6 +135,7 @@ export default {
     this.$store.dispatch('fetchRocketsData'),
     this.$store.dispatch('fetchLaunchesData')
     this.$store.dispatch('fetchSpaceXData')
+    console.log(1)
   }
 }
 </script>
@@ -204,10 +205,10 @@ h5 {
   color: var(--fontcolor);
   width: 100%;
   height: 100%;
-      -webkit-transition: background 1s;
-    -moz-transition: background 1s;
-    -o-transition: background 1s;
-    transition: background 1s;
+  -webkit-transition: background 1s;
+  -moz-transition: background 1s;
+  -o-transition: background 1s;
+  transition: background 1s;
 }
 
 

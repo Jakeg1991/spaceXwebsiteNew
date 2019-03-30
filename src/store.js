@@ -20,6 +20,7 @@ export default new Vuex.Store({
   mutations: {
     launchesDataFetched(state) {
       state.launchesDataFetched = true;
+      console.log(3)
     },
     rocketsDataFetched(state) {
       state.rocketsDataFetched = true;
@@ -88,13 +89,14 @@ export default new Vuex.Store({
     },
 
     async fetchLaunchesData({
+      state,
       commit
-    },) {
-
+    }, plan) {
       try {
         let response = await axios.get(`https://api.spacexdata.com/v3/launches`, {});
         commit('setLaunchesData', response.data);
         commit('launchesDataFetched');
+        console.log(2)
       } catch (error) {
         commit('setLaunchesData', "DATA FETCH FAILED");
       }

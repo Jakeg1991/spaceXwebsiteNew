@@ -1,7 +1,7 @@
 <template>
-  <div class="pageSpacer" v-show="this.$store.state.loggedIn == true">
+  <div class="pageSpacer">
       <div class="componentContainer">
-        <launches_launchesGridWithFilter ref="launchesGrid" :launchesData="this.launchesData" />
+        <launches_launchesGridWithFilter ref="launchesGrid"/>
       </div>
   </div>
 </template>
@@ -16,13 +16,9 @@ export default {
   data() {
     return {
       dataFetched: false,
-      launchesData: undefined,
     }
   },
   methods: {
-    showData() {
-        this.launchesData = this.$store.state.launchesData
-    },
     redirectPage() {
       if (this.$store.state.loggedIn == false) {
         this.$emit('redirectFunc')
@@ -33,7 +29,6 @@ export default {
     },
   },
   mounted() {
-    this.showData()
     this.redirectPage()
   },
 }
