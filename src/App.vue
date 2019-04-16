@@ -26,9 +26,9 @@
 </template>
 <script>
 import firebase from "firebase/app";
-import shared_userInfo from '@/shared_userInfo.vue';
-import shared_navBar from '@/shared_navBar.vue';
-import shared_footer from '@/shared_footer.vue';
+import shared_userInfo from '@/components/shared/shared_userInfo.vue';
+import shared_navBar from '@/components/shared/shared_navBar.vue';
+import shared_footer from '@/components/shared/shared_footer.vue';
 import "firebase/auth";
 import "firebase/database";
 
