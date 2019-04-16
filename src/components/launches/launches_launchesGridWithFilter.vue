@@ -31,11 +31,11 @@
                     <input type="radio" value=0 v-model="launchSuccessFilter">
                     <label> Failed Launches</label>
                 </div>
-                <div class="filterOptionContainer">
+                <div class="filterOptionContainerAlt">
                     <v-text-field solo flat color="rgba(9, 83, 134, 1)" v-model="launchSearchFilter"
-                        label="Search By Keyword"></v-text-field>
+                        label="Search By Name"></v-text-field>
                 </div>
-                <div class="filterOptionContainer">
+                <div class="filterOptionContainerAlt">
                     <v-select :items="rockets" solo flat v-model="currentSelectedRocket"
                         v-on:input="changeSelectedRocket()">
                     </v-select>
@@ -100,10 +100,10 @@ export default {
 
         },
         sortReverse(data) {
-            if (this.reverseSort == 1) {
+            if (this.reverseSort == 0) {
                 return data
             } else {
-                return data.reverse()
+                return data.slice().reverse()
             }
         },
         successFilter(data) {
@@ -169,6 +169,17 @@ color: white
     background-color: rgba(240, 248, 255, 0.9);
     color: rgba(9, 83, 134, 1);
     display: inline-block;
+}
+.filterOptionContainerAlt {
+    border: 1px;
+    border-style: solid;
+    border-radius: 7px;
+    padding: 5px;
+    margin: 10px;
+    background-color: rgba(240, 248, 255, 0.9);
+    color: rgba(9, 83, 134, 1);
+    display: inline-block;
+    height: 60px;
 }
 
 .clearFilterButton{

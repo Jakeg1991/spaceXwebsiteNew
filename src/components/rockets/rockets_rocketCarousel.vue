@@ -5,8 +5,7 @@
     <div class="componentContainerFilter">
     <div class="componentContainerCarousel">
     <v-carousel :cycle="false" dark>
-      <v-carousel-item v-for="(item,i) in this.rocketsData[0].flickr_images" :key="i" :src="item" reverse-transition="fade"
-        transition="fade"></v-carousel-item>
+      <v-carousel-item v-for="(item,i) in this.rocketsData[0].flickr_images" :key="i" :src="item"></v-carousel-item>
     </v-carousel>
     </div>
   <div class="componentContainerCarousel">
@@ -49,8 +48,11 @@ export default {
 <style scoped>
 .componentContainerCarousel{
   width: 100%;
-  margin: 5px;
-padding: 10px;
+  margin: 15px;
+overflow: hidden;
+border-radius: 7px;
+    border: 1px;
+    border-style: solid;
 
 
 }

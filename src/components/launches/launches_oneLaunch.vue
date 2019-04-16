@@ -8,7 +8,7 @@
   v-bind:src="this.launch.links.mission_patch" class="missionPatch"/>
 
   <v-lazy-image v-else
-  src="./../../assets/patch_placeholder.png" class="missionPatch"/>
+  src="http://fab.academany.org/2018/labs/fablabechofab/students/marc-lemaire/downloads/Week03/spacex-logo.svg" class="missionPatch"/>
   
 <!-- 
   text(t).html().replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com)\/(?:watch\?v=)?(.+)/g -->
@@ -40,7 +40,7 @@
 <!-- MODAL -->
 
 
-<v-dialog v-model="dialog" width="1000">
+<v-dialog v-model="dialog" width="750">
   <div class="modal">
     <div class="modalColumn" style="flex-basis:5%">
       <v-btn color="error" flat icon @click="dialog = false">
@@ -51,8 +51,18 @@
 
     <div class="modalColumn" style="flex-basis:95%">
 
-<iframe v-if="this.dialog == true" width="100%" height="100%" v-bind:src="this.youtubeLink" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<!-- <iframe v-if="this.dialog == true" width="100%" height="100%" v-bind:src="this.youtubeLink" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<div v-if="this.dialog == true && this.launch.links.flickr_images.length > 0" class="carouselContainer">
+  <!-- <div class="carouselSpinnerContainer">
+  <img src="./../../assets/spinner.svg" alt="spinner" class="carouselSpinner">
+  </div> -->
+   <v-carousel :cycle="false" dark class="carousel">
+      <v-carousel-item v-for="(item,i) in this.launch.links.flickr_images" :key="i" :src="item"></v-carousel-item>
+    </v-carousel>
+    </div>
+    <div v-else class="noFlickrPlaceholder">
+<h3>NO IMAGES OF LAUNCH AVAILABLE</h3>
+    </div>
     </div>
 
 
@@ -69,45 +79,97 @@ import VLazyImage from "v-lazy-image";
 export default {
   name: "oneLaunch",
   props: ['launch'],
-  data(){
+  data() {
     return {
       dialog: false,
-      youtubeLink: "https://www.youtube.com/watch?v=0a_00nJ_Y88"
-
     }
   },
   components: {
     VLazyImage,
   },
-  methods:{
-            convertUnix(unix) {
-  var a = new Date(unix * 1000);
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
-  var time = date + ' ' + month + ' ' + year + ' ';
-  return time;
-        }
-  },
-  created(){
-      this.youtubeLink = "https://www.youtube.com/embed/0a_00nJ_Y88"
+  methods: {
+    convertUnix(unix) {
+      var a = new Date(unix * 1000);
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var year = a.getFullYear();
+      var month = months[a.getMonth()];
+      var date = a.getDate();
+      var hour = a.getHours();
+      var min = a.getMinutes();
+      var sec = a.getSeconds();
+      var time = date + ' ' + month + ' ' + year + ' ';
+      return time;
+    }
   },
 }
 </script>
 
 <style>
+.carouselSpinner {
+    height: 50px;
+    margin: 10px;
+}
+.carouselSpinnerContainer {
+  position: absolute;
+      left: 42.6%;
+    top: 50.25%;
+    transform: translate(-50%, -50%);
+}
+
+.noFlickrPlaceholder{
+  width: 600px;
+  height: 100%;
+  border-radius: 7px;
+border: 1px;
+border-style: solid;
+border-radius: 7px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background: repeating-linear-gradient(
+  45deg,
+  rgba(0, 0, 0, 0.2),
+  rgba(0, 0, 0, 0.2) 10px,
+  rgba(0, 0, 0, 0.3) 10px,
+  rgba(0, 0, 0, 0.3) 20px
+)
+}
+
+.carouselContainer{
+  overflow: hidden;
+  width: 600px;
+  height: 100%;
+  border-radius: 7px;
+border: 1px;
+border-style: solid;
+border-radius: 7px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background: repeating-linear-gradient(
+  45deg,
+  rgba(0, 0, 0, 0.2),
+  rgba(0, 0, 0, 0.2) 10px,
+  rgba(0, 0, 0, 0.3) 10px,
+  rgba(0, 0, 0, 0.3) 20px
+)
+}
+
+.carousel{
+  /* height: 300px; */
+  width: 600px;
+}
+
 .modalColumn{
   margin: 5px;
   padding: 5px;
 display: flex;
 flex-direction: column;
-border: 1px;
+/* border: 1px;
 border-style: solid;
-border-radius: 7px;
+border-radius: 7px; */
 }
 
 .modalRow{
@@ -116,9 +178,9 @@ padding: 5px
 }
 
 .modalRowInner{
-border: 1px;
+/* border: 1px;
 border-style: solid;
-border-radius: 7px;
+border-radius: 7px; */
 margin: 2px;
 padding: 5px;
 
