@@ -12,7 +12,10 @@
           Options
         </v-btn>
       </v-toolbar-items>
-    <v-navigation-drawer right v-model="drawer" class="userDraw blue-grey darken-3" color="rgba(9, 83, 134, 0.9)" fixed>
+
+<v-dialog v-model="drawer" width="450">
+    <!-- <v-navigation-drawer right v-model="drawer" class="userDraw blue-grey darken-3" color="rgba(9, 83, 134, 0.9)" fixed> -->
+      <div>
       <v-list class="pa-1 blue-grey darken-1">
         <v-list-tile avatar>
           <v-list-tile-avatar>
@@ -24,7 +27,7 @@
           <v-btn flat big round color="warning" v-on:click="logout(), drawer = !drawer"> Logout </v-btn>
         </v-list-tile>
       </v-list>
-      <v-list class="pt-4 pl-3 text-md-center">
+      <v-list class="pt-4 pl-3 text-md-center blue-grey darken-2">
         <v-list-tile>
           <v-switch label="Dark Theme" v-on:change="changeDarkMode()" v-model="darkMode">
           </v-switch>
@@ -32,10 +35,13 @@
         <v-list-tile>
         </v-list-tile>
       </v-list>
-      <v-list>
-        <v-btn flat round @click.stop="drawer = !drawer"> Close </v-btn>
+      <v-list class="blue-grey darken-2">
+        <v-btn color="error" flat round @click.stop="drawer = !drawer"> <v-icon dark>close</v-icon></v-btn>
       </v-list>
-    </v-navigation-drawer>
+    <!-- </v-navigation-drawer> -->
+      </div>
+</v-dialog>
+
     </v-toolbar>
   </div>
 
