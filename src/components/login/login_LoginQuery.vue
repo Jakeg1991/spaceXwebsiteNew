@@ -1,10 +1,12 @@
 <template>
 <div class=fixedContainer>
     <v-card class="componentContainerLogin" elevation-50  color="rgba(9, 83, 134, 0.9)" v-if="this.$store.state.loggedInSuccessfulMsg == false">
+        <div class="componentContainerLogin">
         <h5>Please Login with a Google account to continue.</h5>
         <v-btn flat color="success" v-on:click="login()"> Login </v-btn>
+        </div>
     </v-card>
-        <v-card v-else div class="componentContainerLogin" elevation-50 color="rgba(9, 83, 134, 0.9)">
+        <v-card v-else class="componentContainerLogin" elevation-50 color="rgba(9, 83, 134, 0.9)">
             <h5>Login Successful. Redirecting...</h5>
             <img src="./../../assets/spinner.svg" alt="spinner" class="spinner">
         </v-card>
