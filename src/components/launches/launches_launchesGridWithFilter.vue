@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import launches_oneLaunch from '@/components/launches/launches_oneLaunch.vue';
+import launches_oneLaunch from '@/launches_oneLaunch.vue';
 
 export default {
     name: "launches_launchesGridWithFilter",
