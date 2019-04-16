@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class=fixedContainer>
     <v-card class="componentContainerLogin" elevation-50  color="rgba(9, 83, 134, 0.9)" v-if="this.$store.state.loggedInSuccessfulMsg == false">
         <h5>Please Login with a Google account to continue.</h5>
         <v-btn flat color="success" v-on:click="login()"> Login </v-btn>
@@ -37,7 +37,7 @@ export default {
     justify-content: center;
     width: 300px;
     height: 125px;
-    position: fixed;
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -47,6 +47,11 @@ export default {
 .spinner {
     height: 50px;
     margin: 10px
+}
+.fixedContainer {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
 }
 </style>
 
