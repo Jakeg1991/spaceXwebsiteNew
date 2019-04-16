@@ -7,8 +7,10 @@
         </div>
     </v-card>
         <v-card v-else class="componentContainerLogin" elevation-50 color="rgba(9, 83, 134, 0.9)">
+            <div class="componentContainerLogin">
             <h5>Login Successful. Redirecting...</h5>
             <img src="./../../assets/spinner.svg" alt="spinner" class="spinner">
+            </div>
         </v-card>
     </div>
 </template>
