@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import launches_launchesGridWithFilter from '@/components/launches/launches_launchesGridWithFilter.vue';
+import launches_launchesGridWithFilter from '@/launches_launchesGridWithFilter.vue';
 export default {
   name: 'launches',
   components: {
