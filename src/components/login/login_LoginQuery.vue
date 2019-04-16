@@ -35,6 +35,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 300px;
     height: 125px;
     position: absolute;
