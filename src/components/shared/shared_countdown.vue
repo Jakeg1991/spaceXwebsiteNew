@@ -71,7 +71,7 @@ export default {
         }
     },
     mounted() {
-        // this.createCountdownClock()
+        this.createCountdownClock()
     }
 }
 </script>

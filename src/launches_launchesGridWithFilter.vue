@@ -5,10 +5,10 @@
         <div class="flexBoxWrapper">
             <div class="componentContainerFilter">
                 <div class="filterOptionContainer">
-                    <input type="radio" value=1 v-model="reverseSort">
+                    <input type="radio" value=0 v-model="reverseSort">
                     <label for="two"> Soonest/Recent First</label>
                     <br>
-                    <input type="radio" value=0 v-model="reverseSort">
+                    <input type="radio" value=1 v-model="reverseSort">
                     <label for="one"> Oldest First</label>
                 </div>
                 <div class="filterOptionContainer">
@@ -81,10 +81,11 @@ export default {
     computed: {
         launchesDataCompute() {
             return this.rocketsFilter(
+                this.sortReverse(
                 this.searchFilter(
                     this.upcomingFilter(
                         this.successFilter(
-                            this.$store.state.launchesData))))
+                            this.$store.state.launchesData)))))
         }
     },
     methods: {
@@ -95,6 +96,13 @@ export default {
             this.launchSearchFilter = ""
             this.currentSelectedRocket = "All Rocket Types"
 
+        },
+        sortReverse(data){
+            if(this.reverseSort == 1){
+                return data
+            } else {
+                return data.reverse()
+            }
         },
         successFilter(data) {
             if (this.launchSuccessFilter == 2) {

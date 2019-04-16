@@ -80,11 +80,12 @@ export default {
     },
     computed: {
         launchesDataCompute() {
-            return this.rocketsFilter(
+            return this.sortReverse(
+            this.rocketsFilter(
                 this.searchFilter(
                     this.upcomingFilter(
                         this.successFilter(
-                            this.$store.state.launchesData))))
+                            this.$store.state.launchesData)))))
         }
     },
     methods: {
@@ -95,6 +96,13 @@ export default {
             this.launchSearchFilter = ""
             this.currentSelectedRocket = "All Rocket Types"
 
+        },
+        sortReverse(data) {
+            if (this.reverseSort == 1) {
+                return data
+            } else {
+                return data.reverse()
+            }
         },
         successFilter(data) {
             if (this.launchSuccessFilter == 2) {
