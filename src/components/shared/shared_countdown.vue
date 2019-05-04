@@ -3,13 +3,13 @@
         <div class="countdownItemContainer">
             <h3>Mission Name:</h3>
             <h2>
-                {{this.$store.state.launchesData.filter(launches => launches.upcoming == true)[0].mission_name}}
+                {{this.$store.state.launchesData.filter(launches => launches.upcoming == true)[1].mission_name}}
             </h2>
         </div>
         <div class="countdownItemContainer">
             <h3>Launch Date:</h3>
             <h2>
-                {{this.convertUnix(this.$store.state.launchesData.filter(launches => launches.upcoming == true)[0].launch_date_unix)}}
+                {{this.convertUnix(this.$store.state.launchesData.filter(launches => launches.upcoming == true)[1].launch_date_unix)}}
             </h2>
         </div>
         <div class="countdownItemContainerClock">
@@ -19,7 +19,7 @@
         <div class="countdownItemContainer">
             <h3>Location:</h3>
             <h2>
-                {{this.$store.state.launchesData.filter(launches => launches.upcoming == true)[0].launch_site.site_name_long}}
+                {{this.$store.state.launchesData.filter(launches => launches.upcoming == true)[1].launch_site.site_name_long}}
             </h2>
         </div>
     </div>
@@ -38,7 +38,7 @@ export default {
     },
     methods: {
         getLaunchDate() {
-            return this.$store.state.launchesData.filter(launches => launches.upcoming == true)[0].launch_date_utc
+            return this.$store.state.launchesData.filter(launches => launches.upcoming == true)[1].launch_date_utc
         },
         createCountdownClock() {
             let countDownDate = new Date(this.getLaunchDate()).getTime();
@@ -58,15 +58,15 @@ export default {
             }, 1000);
         },
         convertUnix(unix) {
-            var a = new Date(unix * 1000);
-            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            var year = a.getFullYear();
-            var month = months[a.getMonth()];
-            var date = a.getDate();
-            var hour = a.getHours();
-            var min = a.getMinutes();
-            var sec = a.getSeconds();
-            var time = date + ' ' + month + ' ' + year + ' ';
+            let a = new Date(unix * 1000);
+            let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            let year = a.getFullYear();
+            let month = months[a.getMonth()];
+            let date = a.getDate();
+            let hour = a.getHours();
+            let min = a.getMinutes();
+            let sec = a.getSeconds();
+            let time = date + ' ' + month + ' ' + year + ' ';
             return time;
         }
     },
