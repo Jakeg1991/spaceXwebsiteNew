@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
 Vue.use(Router)
-
 
 export default 
 
@@ -28,6 +26,9 @@ new Router({
       name: 'login',
       component: () => import('./views/Login.vue')
     },
-    { path: '*', redirect: '/' }
+    {
+      path: '*',
+      redirect: '/'
+    }
   ]
 });

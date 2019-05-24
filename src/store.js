@@ -20,19 +20,16 @@ export default new Vuex.Store({
   mutations: {
     launchesDataFetched(state) {
       state.launchesDataFetched = true;
-      console.log(3)
     },
     rocketsDataFetched(state) {
       state.rocketsDataFetched = true;
     },
-    SpaceXDataFetched(state) {
+    spaceXDataFetched(state) {
       state.spaceXData = true;
     },
-
     setUserInfo(state, payload) {
       state.userData = payload;
     },
-
     setLogin(state) {
       state.loggedIn = true
     },
@@ -46,7 +43,6 @@ export default new Vuex.Store({
     setDarkmode(state) {
       state.darkMode = !state.darkMode
     },
-
     setLaunchesData(state, payload) {
       state.launchesData = payload;
     },
@@ -96,7 +92,6 @@ export default new Vuex.Store({
         let response = await axios.get(`https://api.spacexdata.com/v3/launches`, {});
         commit('setLaunchesData', response.data);
         commit('launchesDataFetched');
-        console.log(2)
       } catch (error) {
         commit('setLaunchesData', "DATA FETCH FAILED");
       }
@@ -107,7 +102,7 @@ export default new Vuex.Store({
       commit
     }, plan) {
       try {
-        let response = await axios.get(`https://api.spacexdata.com/v3/rockets`, {});
+        const response = await axios.get(`https://api.spacexdata.com/v3/rockets`, {});
         commit('setRocketsData', response.data);
         commit('rocketsDataFetched');
       } catch (error) {
@@ -119,9 +114,9 @@ export default new Vuex.Store({
       commit
     }, plan) {
       try {
-        let response = await axios.get(`https://api.spacexdata.com/v3/info`, {});
+        const response = await axios.get(`https://api.spacexdata.com/v3/info`, {});
         commit('setSpaceXData', response.data);
-        commit('SpaceXDataFetched');
+        commit('spaceXDataFetched');
       } catch (error) {
         commit('setSpaceXData', "DATA FETCH FAILED");
       }

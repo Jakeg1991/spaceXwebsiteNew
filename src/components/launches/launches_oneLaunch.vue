@@ -1,75 +1,52 @@
 <template>
 <div class="launchPatchClickable" @click="dialog = true">
-
-
-  <!-- <img v-if="this.launch.upcoming === false" v-bind:src="this.launch.links.mission_patch" class="missionPatch" @click="dialog = true"/> -->
-
-  <v-lazy-image v-if="this.launch.upcoming === false"
-  v-bind:src="this.launch.links.mission_patch" class="missionPatch"/>
-
+  <v-lazy-image v-if="this.launch.upcoming === false" v-bind:src="this.launch.links.mission_patch"
+    class="missionPatch" />
   <v-lazy-image v-else
-  src="http://fab.academany.org/2018/labs/fablabechofab/students/marc-lemaire/downloads/Week03/spacex-logo.svg" class="missionPatch"/>
-  
-<!-- 
-  text(t).html().replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com)\/(?:watch\?v=)?(.+)/g -->
-
-  <!-- <img v-else src="@/assets/patch_placeholder.png" class="missionPatch"/> -->
-  
+    src="http://fab.academany.org/2018/labs/fablabechofab/students/marc-lemaire/downloads/Week03/spacex-logo.svg"
+    class="missionPatch" />
   <div class="missionInfo">
     <div class="missionHeaderContainer" style="flex-basis:30%">
       <h2 class='altHeader'><strong>{{this.launch.mission_name}}</strong></h2>
     </div>
-      <h2 v-if="this.launch.launch_success === true" style="color:#00d300">SUCCESS</h2>
-      <h2 v-else-if="this.launch.launch_success === false" style="color:#d30000">FAILURE</h2>
-      <h2 v-else style="color:#00d3d3">UPCOMING</h2>
+    <h2 v-if="this.launch.launch_success === true" style="color:#00d300">SUCCESS</h2>
+    <h2 v-else-if="this.launch.launch_success === false" style="color:#d30000">FAILURE</h2>
+    <h2 v-else style="color:#00d3d3">UPCOMING</h2>
     <div class="infoDivider">
-    <div style="padding-right:2px text-align:start">
-    <p>Flight Nº:</p>
-    <p>Rocket:</p>
-    <p>Date:</p>
-    </div>
-    <div>
-    <p><strong>{{this.launch.flight_number}}</strong></p>
-    <p><strong>{{this.launch.rocket.rocket_name}}</strong></p>
-    <p><strong>{{this.convertUnix(this.launch.launch_date_unix)}}</strong></p>
-    </div>
+      <div style="padding-right:2px text-align:start">
+        <p>Flight Nº:</p>
+        <p>Rocket:</p>
+        <p>Date:</p>
+      </div>
+      <div>
+        <p><strong>{{this.launch.flight_number}}</strong></p>
+        <p><strong>{{this.launch.rocket.rocket_name}}</strong></p>
+        <p><strong>{{this.convertUnix(this.launch.launch_date_unix)}}</strong></p>
+      </div>
     </div>
   </div>
 
 
-<!-- MODAL -->
-
-
-<v-dialog v-model="dialog" width="750">
-  <div class="modal">
-    <div class="modalColumn" style="flex-basis:5%">
-      <v-btn color="error" flat icon @click="dialog = false">
-        <v-icon dark>close</v-icon>
-      </v-btn>
+  <!-- MODAL -->
+  <v-dialog v-model="dialog" width="750">
+    <div class="modal">
+      <div class="modalColumn" style="flex-basis:5%">
+        <v-btn color="error" flat icon @click="dialog = false">
+          <v-icon dark>close</v-icon>
+        </v-btn>
+      </div>
+      <div class="modalColumn" style="flex-basis:95%">
+        <div v-if="this.dialog == true && this.launch.links.flickr_images.length > 0" class="carouselContainer">
+          <v-carousel :cycle="false" dark class="carousel">
+            <v-carousel-item v-for="(item,i) in this.launch.links.flickr_images" :key="i" :src="item"></v-carousel-item>
+          </v-carousel>
+        </div>
+        <div v-else class="noFlickrPlaceholder">
+          <h3>NO IMAGES OF LAUNCH AVAILABLE</h3>
+        </div>
+      </div>
     </div>
-
-
-    <div class="modalColumn" style="flex-basis:95%">
-
-<!-- <iframe v-if="this.dialog == true" width="100%" height="100%" v-bind:src="this.youtubeLink" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-<div v-if="this.dialog == true && this.launch.links.flickr_images.length > 0" class="carouselContainer">
-  <!-- <div class="carouselSpinnerContainer">
-  <img src="./../../assets/spinner.svg" alt="spinner" class="carouselSpinner">
-  </div> -->
-   <v-carousel :cycle="false" dark class="carousel">
-      <v-carousel-item v-for="(item,i) in this.launch.links.flickr_images" :key="i" :src="item"></v-carousel-item>
-    </v-carousel>
-    </div>
-    <div v-else class="noFlickrPlaceholder">
-<h3>NO IMAGES OF LAUNCH AVAILABLE</h3>
-    </div>
-    </div>
-
-
-  </div>
-</v-dialog>
-
-
+  </v-dialog>
 </div>
 </template>
 
@@ -106,87 +83,76 @@ export default {
 
 <style>
 .carouselSpinner {
-    height: 50px;
-    margin: 10px;
-}
-.carouselSpinnerContainer {
-  position: absolute;
-      left: 42.6%;
-    top: 50.25%;
-    transform: translate(-50%, -50%);
+  height: 50px;
+  margin: 10px;
 }
 
-.noFlickrPlaceholder{
+.carouselSpinnerContainer {
+  position: absolute;
+  left: 42.6%;
+  top: 50.25%;
+  transform: translate(-50%, -50%);
+}
+
+.noFlickrPlaceholder {
   width: 600px;
   height: 100%;
   border-radius: 7px;
-border: 1px;
-border-style: solid;
-border-radius: 7px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-background: repeating-linear-gradient(
-  45deg,
-  rgba(0, 0, 0, 0.2),
-  rgba(0, 0, 0, 0.2) 10px,
-  rgba(0, 0, 0, 0.3) 10px,
-  rgba(0, 0, 0, 0.3) 20px
-)
+  border: 1px;
+  border-style: solid;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: repeating-linear-gradient(45deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2) 10px,
+      rgba(0, 0, 0, 0.3) 10px,
+      rgba(0, 0, 0, 0.3) 20px)
 }
 
-.carouselContainer{
+.carouselContainer {
   overflow: hidden;
   width: 600px;
   height: 100%;
   border-radius: 7px;
-border: 1px;
-border-style: solid;
-border-radius: 7px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-background: repeating-linear-gradient(
-  45deg,
-  rgba(0, 0, 0, 0.2),
-  rgba(0, 0, 0, 0.2) 10px,
-  rgba(0, 0, 0, 0.3) 10px,
-  rgba(0, 0, 0, 0.3) 20px
-)
+  border: 1px;
+  border-style: solid;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: repeating-linear-gradient(45deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2) 10px,
+      rgba(0, 0, 0, 0.3) 10px,
+      rgba(0, 0, 0, 0.3) 20px)
 }
 
-.carousel{
-  /* height: 300px; */
+.carousel {
   width: 600px;
 }
 
-.modalColumn{
+.modalColumn {
   margin: 5px;
   padding: 5px;
-display: flex;
-flex-direction: column;
-/* border: 1px;
-border-style: solid;
-border-radius: 7px; */
+  display: flex;
+  flex-direction: column;
 }
 
-.modalRow{
-margin: 2px;
-padding: 5px
+.modalRow {
+  margin: 2px;
+  padding: 5px
 }
 
-.modalRowInner{
-/* border: 1px;
-border-style: solid;
-border-radius: 7px; */
-margin: 2px;
-padding: 5px;
-
+.modalRowInner {
+  margin: 2px;
+  padding: 5px;
 }
 
-.modal{
+.modal {
   color: black;
   height: 60vh;
   background-color: var(--utlitybarcolor);
@@ -200,15 +166,15 @@ padding: 5px;
 
 }
 
-.infoDivider{
+.infoDivider {
   display: flex;
 }
 
-.altHeader{
+.altHeader {
   color: var(--fontcolor)
 }
 
-.missionInfo{
+.missionInfo {
   border-radius: 10px;
   height: 100%;
   width: 50%;
@@ -218,10 +184,10 @@ padding: 5px;
   color: var(--fontcolor);
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
 }
 
-.launchPatchClickable{
+.launchPatchClickable {
   margin: 5px 15px 5px 15px;
   border-radius: 10px;
   height: 150px;
@@ -236,10 +202,9 @@ padding: 5px;
 
 .launchPatchClickable:hover {
   transform: scale(1.5);
-
 }
 
-.missionPatch{
+.missionPatch {
   width: 50%;
   margin: 10px
 }
@@ -252,5 +217,4 @@ padding: 5px;
 .v-lazy-image-loaded {
   filter: blur(0);
 }
-
 </style>

@@ -16,10 +16,11 @@
               </div>
               <div class="infoBox">
                 <p>
-                  SpaceX's achievements include;
+                  SpaceX's achievements include:
                   <br>
                   <ul>
-                    <li>building the first privately funded liquid-propellant rocket to reach orbit (Falcon 1 in 2008),</li>
+                    <li>building the first privately funded liquid-propellant rocket to reach orbit (Falcon 1 in 2008),
+                    </li>
                     <li>becoming the first private company to successfully launch, orbit, and recover a spacecraft
                       (Dragon in 2010),</li>
                     <li>being the first private company to send a spacecraft to the International Space Station (Dragon
@@ -40,13 +41,12 @@
           </div>
         </div>
       </div>
-
-    <div class="componentContainer">
-      <h2>NEXT LAUNCH :</h2>
-<div class="flexBoxWrapper">
-      <shared_countdown v-if="this.$store.state.loggedIn == true"/>
+      <div class="componentContainer">
+        <h2>NEXT LAUNCH :</h2>
+        <div class="flexBoxWrapper">
+          <shared_countdown v-if="this.$store.state.loggedIn == true" />
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -72,8 +72,4 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-
-</style>
 

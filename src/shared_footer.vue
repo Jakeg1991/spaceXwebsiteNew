@@ -8,10 +8,8 @@
 <script>
   export default {
         name: "shared_footer",
-    components: {},
   }
 </script>
-
 
 <style>
 

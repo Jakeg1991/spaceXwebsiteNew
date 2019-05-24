@@ -61,7 +61,6 @@
 
 <script>
 import launches_oneLaunch from '@/components/launches/launches_oneLaunch.vue';
-// import launches_oneLaunch from '@/launches_oneLaunch.vue';
 
 
 export default {
@@ -83,11 +82,11 @@ export default {
     computed: {
         launchesDataCompute() {
             return this.sortReverse(
-            this.rocketsFilter(
-                this.searchFilter(
-                    this.upcomingFilter(
-                        this.successFilter(
-                            this.$store.state.launchesData)))))
+                this.rocketsFilter(
+                    this.searchFilter(
+                        this.upcomingFilter(
+                            this.successFilter(
+                                this.$store.state.launchesData)))))
         }
     },
     methods: {
@@ -128,7 +127,7 @@ export default {
             }
         },
         rocketsFilter(data) {
-            if (this.currentSelectedRocket === "All Rocket Types") {
+            if (this.currentSelectedRocket == "All Rocket Types") {
                 return data
             } else {
                 return data.filter(launches => launches.rocket.rocket_name == this.currentSelectedRocket)
@@ -139,10 +138,10 @@ export default {
 </script>
 
 <style>
-.noResultWarn{
-margin: 10px;
-position: absolute;
-color: white
+.noResultWarn {
+    margin: 10px;
+    position: absolute;
+    color: white
 }
 
 .gridFlex {
@@ -155,7 +154,7 @@ color: white
 .launchesPatchGrid {
     margin: 0px 10px 0px 10px;
     padding: 0px 15px 15px 15px;
-    transform-origin:top;
+    transform-origin: top;
     min-height: 45px;
     height: auto;
 }
@@ -170,6 +169,7 @@ color: white
     color: rgba(9, 83, 134, 1);
     display: inline-block;
 }
+
 .filterOptionContainerAlt {
     border: 1px;
     border-style: solid;
@@ -182,8 +182,8 @@ color: white
     height: 60px;
 }
 
-.clearFilterButton{
-    margin:10px;
+.clearFilterButton {
+    margin: 10px;
     display: inline-block;
 }
 

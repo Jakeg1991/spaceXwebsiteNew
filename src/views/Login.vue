@@ -1,8 +1,7 @@
 <template>
-<div class="componentContainer">
-<login_LoginQuery @loginClicked="runLogin()"/>
-<!-- <img src="@/../../../assets/SpaceX-Logo.svg" alt="SpaceXlogo" class="logo"> -->
-</div>
+  <div class="componentContainer">
+    <login_LoginQuery @loginClicked="runLogin()" />
+  </div>
 </template>
 
 <script>
@@ -13,13 +12,9 @@ export default {
     login_LoginQuery,
   },
   methods: {
-    runLogin(){
+    runLogin() {
       this.$emit('loginRunFunc')
     }
   }
 }
 </script>
-
-<style>
-
-</style>

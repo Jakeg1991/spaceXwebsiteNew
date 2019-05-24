@@ -24,6 +24,7 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     name: "countdown",
@@ -53,7 +54,7 @@ export default {
                     minutes + "m " + seconds + "s ";
                 if (distance < 0) {
                     clearInterval(x);
-                    document.getElementById("countdown").innerHTML = "EXPIRED";
+                    document.getElementById("countdown").innerHTML = "ALREADY LAUNCHEDç";
                 }
             }, 1000);
         },
@@ -77,25 +78,27 @@ export default {
 </script>
 
 <style>
-.countdownItemContainer{
-    margin: 15px;
-    word-wrap: unset
-}
-.countdownItemContainerClock{
-    margin: 15px;
-    word-wrap: unset;
-    width: 200px
-}
-.componentContainerCountdown {
-    margin: 10px;
-    width: 100%;
-    background-color: var(--utlitybarcolor);
-    border-radius: 7px;
-    padding: 0px 10px 0px 10px;
-    border: 1px;
-    border-style: solid;
-    display: flex;
-    justify-content:space-around
-}
+    .countdownItemContainer {
+        margin: 15px;
+        word-wrap: unset
+    }
+
+    .countdownItemContainerClock {
+        margin: 15px;
+        word-wrap: unset;
+        width: 200px
+    }
+
+    .componentContainerCountdown {
+        margin: 10px;
+        width: 100%;
+        background-color: var(--utlitybarcolor);
+        border-radius: 7px;
+        padding: 0px 10px 0px 10px;
+        border: 1px;
+        border-style: solid;
+        display: flex;
+        justify-content: space-around
+    }
 </style>
 

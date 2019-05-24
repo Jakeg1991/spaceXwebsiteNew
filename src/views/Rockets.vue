@@ -1,17 +1,18 @@
 <template>
-<div class="pageSpacer" v-show="this.$store.state.loggedIn == true">
-  <div v-if="this.dataFetched == true">
-    <div class="componentContainer">
-      <rockets_rocketSelector ref="rocketSelector" :rocketsData="this.$store.state.rocketsData" />
-      <rockets_generalInfo ref="generalInfo" :rocketsData="this.chosenRocketData" />
-      <rockets_rocketCarousel ref="rocketGraphic" :rocketsData="this.chosenRocketData" />
-      <rockets_technicalDetails ref="technicalDetails" :rocketsData="this.chosenRocketData" />
-      <rockets_missionsFlown ref="missionsFlown" :chosenRocketMissionData="this.chosenRocketMissionData" />
+  <div class="pageSpacer" v-show="this.$store.state.loggedIn == true">
+    <div v-if="this.dataFetched == true">
+      <div class="componentContainer">
+        <rockets_rocketSelector ref="rocketSelector" :rocketsData="this.$store.state.rocketsData" />
+        <rockets_generalInfo ref="generalInfo" :rocketsData="this.chosenRocketData" />
+        <rockets_rocketCarousel ref="rocketGraphic" :rocketsData="this.chosenRocketData" />
+        <rockets_technicalDetails ref="technicalDetails" :rocketsData="this.chosenRocketData" />
+        <rockets_missionsFlown ref="missionsFlown" :chosenRocketMissionData="this.chosenRocketMissionData" />
+      </div>
     </div>
+    <div v-else> DATA NOT FETCHED</div>
   </div>
-  <div v-else> DATA NOT FETCHED</div>
-</div>
 </template>
+
 <script>
 import rockets_technicalDetails from '@/components/rockets/rockets_technicalDetails.vue';
 import rockets_rocketSelector from '@/components/rockets/rockets_rocketSelector.vue';
@@ -36,10 +37,11 @@ export default {
     rockets_generalInfo,
   },
   methods: {
-    showData(){
-      if(this.$store.state.rocketsDataFetched = true)
-      {this.dataFetched = true
-      this.filterRockets("Falcon 1")}
+    showData() {
+      if (this.$store.state.rocketsDataFetched = true) {
+        this.dataFetched = true
+        this.filterRockets("Falcon 1")
+      }
     },
     redirectPage() {
       if (this.$store.state.loggedIn == false) {

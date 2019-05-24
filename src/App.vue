@@ -3,36 +3,31 @@
     <div class="body">
       <div class="fixed">
         <transition name="fade">
-        <div v-if="this.$store.state.loggedIn == true">
-        <shared_navBar @openDrawer="openDrawer()" @logoutClicked="logout()"/>
-        </div>
+          <div v-if="this.$store.state.loggedIn == true">
+            <shared_navBar @openDrawer="openDrawer()" @logoutClicked="logout()" />
+          </div>
         </transition>
-        <!-- <shared_userInfo @logoutClicked="logout()" :drawer="this.drawer"/> -->
       </div>
-
-
-<keep-alive>
-      <router-view @loginRunFunc="login()" @logoutRunFunc="logout()" @redirectFunc="redirectLogin()"/>
-</keep-alive>
-
-         <transition name="fade">
+      <keep-alive>
+        <router-view @loginRunFunc="login()" @logoutRunFunc="logout()" @redirectFunc="redirectLogin()" />
+      </keep-alive>
+      <transition name="fade">
         <div v-if="this.$store.state.loggedIn == true">
-        <shared_footer/>
+          <shared_footer />
         </div>
-                </transition>
-
+      </transition>
     </div>
   </v-app>
 </template>
+
 <script>
 import firebase from "firebase/app";
-import shared_userInfo from '@/shared_userInfo.vue';
 import shared_navBar from '@/shared_navBar.vue';
 import shared_footer from '@/shared_footer.vue';
 import "firebase/auth";
 import "firebase/database";
 
-var config = {
+const firebaseConfig = {
   apiKey: "AIzaSyAeDJ0KU9ELqJv5Fe6FCeh4K0vRn0IZ1qs",
   authDomain: "spacexapplogin.firebaseapp.com",
   databaseURL: "https://spacexapplogin.firebaseio.com",
@@ -40,7 +35,7 @@ var config = {
   storageBucket: "spacexapplogin.appspot.com",
   messagingSenderId: "167057019693"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 
 export default {
   name: 'App',
@@ -80,7 +75,6 @@ export default {
         document.documentElement.style.setProperty('--fontcolor', "rgba(9, 83, 134, 1)")
         document.documentElement.style.setProperty('--utlitybarcolor', " rgba(9, 83, 134, 0.9)")
         document.documentElement.style.setProperty('--bgimage', "url('https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/2014_-_10_replacement_-_iss039e021507.jpg?itok=4y_yxHSD')")
-
       } else {
         document.documentElement.style.setProperty('--bgcolor', 'rgb(20,20,20)')
         document.documentElement.style.setProperty('--highlightcolor', "rgba(80, 80, 80, 0.9)")
@@ -135,7 +129,6 @@ export default {
     this.$store.dispatch('fetchRocketsData'),
     this.$store.dispatch('fetchLaunchesData')
     this.$store.dispatch('fetchSpaceXData')
-    console.log(1)
   }
 }
 </script>
@@ -160,28 +153,16 @@ p {
   text-align: justify;
 }
 
-// br {
-//   // display: block;
-//   // content: "";
-//   // margin-top: 5px;
-// }
-
-h3,h2,h4,h5  {
+h3,
+h2,
+h4,
+h5 {
   color: white;
   font-weight: 1;
 }
 
-.infoHeaderContainer {
-  display: flex;
-  justify-content: center;
-  margin: 0px 0px 0px -10px;
-  padding: 15px 15px 5px 15px;
-  min-width: 120px;
-  background-color: var(--utlitybarcolor);
-  border-radius:5px;
-}
-
-h2,h4 {
+h2,
+h4 {
   margin: 0px 0px 0px -10px;
   padding: 10px 10px 0px 10px;
 }
@@ -194,10 +175,8 @@ h5 {
 
 .body {
   font-family: 'bankGothicRegular', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-image: url("https://www.spacex.com/sites/spacex/files/styles/new_gallery_large/public/2013_-_11_vandenberg_sunset_rocket_on_pad.jpg?itok=d6cI50Qk");
-  background-image: url("https://www.spacex.com/sites/spacex/files/crew_dragon_iss_resized.jpg");
   background-image: var(--bgimage);
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -215,18 +194,16 @@ h5 {
 
 .componentContainer {
   margin: 15px;
-  
+
 }
 
 .componentContainerInner {
   margin: 10px;
   width: 100%;
-  border-color: var(--highlightcolor2);
   background-color: var(--innercolor);
   border-radius: 7px;
   padding: 0px 10px 0px 10px;
-  border: 1px;
-  border-style: solid;
+  border: 1px solid var(--highlightcolor2);
   display: flex;
   justify-content: flex-start
 }
@@ -242,16 +219,29 @@ h5 {
   justify-content: space-around
 }
 
-.pageSpacer{
-margin: 100px 0px 100px 0px
+.pageSpacer {
+  margin: 100px 0px 100px 0px
+}
+
+.infoHeaderContainer {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 0px -10px;
+  padding: 15px 15px 5px 15px;
+  min-width: 120px;
+  background-color: var(--utlitybarcolor);
+  border-radius: 5px;
 }
 
 //ANIMATIONS
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 

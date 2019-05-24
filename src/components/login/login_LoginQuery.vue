@@ -1,15 +1,16 @@
 <template>
-<div class=fixedContainer>
-    <v-card class="componentContainerLogin" elevation-50  color="rgba(9, 83, 134, 0.9)" v-if="this.$store.state.loggedInSuccessfulMsg == false">
-        <div class="componentContainerLogin">
-        <h5>Please Login with a Google account to continue.</h5>
-        <v-btn flat color="success" v-on:click="login()"> Login </v-btn>
-        </div>
-    </v-card>
+    <div class=fixedContainer>
+        <v-card class="componentContainerLogin" elevation-50 color="rgba(9, 83, 134, 0.9)"
+            v-if="this.$store.state.loggedInSuccessfulMsg == false">
+            <div class="componentContainerLogin">
+                <h5>Please Login with a Google account to continue.</h5>
+                <v-btn flat color="success" v-on:click="login()"> Login </v-btn>
+            </div>
+        </v-card>
         <v-card v-else class="componentContainerLogin" elevation-50 color="rgba(9, 83, 134, 0.9)">
             <div class="componentContainerLogin">
-            <h5>Login Successful. Redirecting...</h5>
-            <img src="./../../assets/spinner.svg" alt="spinner" class="spinner">
+                <h5>Login Successful. Redirecting...</h5>
+                <img src="./../../assets/spinner.svg" alt="spinner" class="spinner">
             </div>
         </v-card>
     </div>
@@ -49,10 +50,12 @@ export default {
     border-radius: 7px;
     padding: 0px 10px 0px 10px;
 }
+
 .spinner {
     height: 50px;
     margin: 10px
 }
+
 .fixedContainer {
     position: fixed;
     height: 100vh;
