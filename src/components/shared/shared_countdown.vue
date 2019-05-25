@@ -54,7 +54,7 @@ export default {
                     minutes + "m " + seconds + "s ";
                 if (distance < 0) {
                     clearInterval(x);
-                    document.getElementById("countdown").innerHTML = "ALREADY LAUNCHEDç";
+                    document.getElementById("countdown").innerHTML = "ALREADY LAUNCHED";
                 }
             }, 1000);
         },

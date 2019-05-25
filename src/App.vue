@@ -46,7 +46,6 @@ export default {
     }
   },
   components: {
-    shared_userInfo,
     shared_navBar,
     shared_footer
   },
